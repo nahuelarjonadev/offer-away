@@ -10,6 +10,11 @@ db.connect();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//return list of all the in stock items
+app.get('/catalog', (req, res) => {
+
+})
+
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
 })
