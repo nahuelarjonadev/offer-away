@@ -13,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //api route to return all items from catalog
 app.get('/products', controllers.getAllItems(), (req, res) => {
-
+  //send back dummy data found in controllers
+  res.status(200).json(res.locals.dummyData)
 })
 
 //api route to return subset of items from catalog based on category
@@ -30,22 +31,13 @@ app.post('/purchase', (req, res) => {
   //STRETCH FEATURE: authentication for customer
 })
 
-//error handling for 404
 app.use(function (req, res, next) {
+  //404
   res.locals.message = 'PAGE NOT FOUND';
   const err = new Error('RESOURCE NOT FOUND');
   err.status = 404;
   return next(err);
 });
-
-//general error handling to close out request
-app.use(function (err, req, res, next) {
-  return res.status(err.status || 500).json({
-    success: false,
-    message: res.locals.message,
-    error: err || 500
-  });
-})
 
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
