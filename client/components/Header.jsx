@@ -5,8 +5,10 @@ import NavBar from './Navbar';
 function Header() {
   return (
     <header>
-      <NavBar />
-      <CartBtn />
+      <div className='header-right'>
+        <NavBar />
+        <CartBtn />
+      </div>
     </header>
   );
 }
