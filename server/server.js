@@ -30,13 +30,22 @@ app.post('/purchase', (req, res) => {
   //STRETCH FEATURE: authentication for customer
 })
 
+//error handling for 404
 app.use(function (req, res, next) {
-  //404
   res.locals.message = 'PAGE NOT FOUND';
   const err = new Error('RESOURCE NOT FOUND');
   err.status = 404;
   return next(err);
 });
+
+//general error handling to close out request
+app.use(function (err, req, res, next) {
+  return res.status(err.status || 500).json({
+    success: false,
+    message: res.locals.message,
+    error: err || 500
+  });
+})
 
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
