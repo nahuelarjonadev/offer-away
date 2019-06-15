@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //api route to return all items from catalog
 app.get('/products', controllers.getAllItems(), (req, res) => {
-
+  res.status(200)
 })
 
 //api route to return subset of items from catalog based on category
@@ -29,6 +29,14 @@ app.post('/purchase', (req, res) => {
 
   //STRETCH FEATURE: authentication for customer
 })
+
+app.use(function (req, res, next) {
+  //404
+  res.locals.message = 'PAGE NOT FOUND';
+  const err = new Error('RESOURCE NOT FOUND');
+  err.status = 404;
+  return next(err);
+});
 
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
