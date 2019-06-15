@@ -1,14 +1,46 @@
 header {
   border: 1px solid black;
+  display: flex;
   height: 10vh;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+}
+
+.header-right {
+  display: flex;
 }
 
 main {
   border: 1px solid black;
-  height: 77.5vh;
+  height: 65vh;
+  padding: 4em;
 }
 
 footer {
   border: 1px solid black;
   height: 10vh;
+}
+
+ul.navbar li {
+  display: inline-block;
+  padding: 0 3px;
+}
+
+h1, h2, h3, h4, h5, h6, p, img {
+  border: 1px solid black;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: 900;
+  font-style: italic;
+}
+
+#catalog {
+  border: 1px solid red;
+  height: 100%;
+  display: flex;
 }
