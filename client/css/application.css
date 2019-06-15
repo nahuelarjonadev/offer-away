@@ -31,3 +31,10 @@ ul.navbar li {
 h1, h2, h3, h4, h5, h6, p, img {
   border: 1px solid black;
 }
+
+h1 {
+  font-size: 4em;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+}
