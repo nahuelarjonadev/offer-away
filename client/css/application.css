@@ -1,6 +1,16 @@
 header {
   border: 1px solid black;
+  display: flex;
   height: 10vh;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+}
+
+.header-right {
+  display: flex;
 }
 
 main {
@@ -13,7 +23,11 @@ footer {
   height: 10vh;
 }
 
- ul.navbar li {
+ul.navbar li {
   display: inline-block;
   padding: 0 3px;
+}
+
+h1, h2, h3, h4, h5, h6, p, img {
+  border: 1px solid black;
 }
