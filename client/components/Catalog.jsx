@@ -1,12 +1,14 @@
-import React from 'react';
-
-const items = [
-  <div>item</div>,
-  <div>item</div>,
-  <div>item</div>,
-];
+import React, { useState } from 'react';
 
 function Catalog() {
+  const [items, setItems] = useState([]);
+
+  fetch('/api/products')
+    .then(res => res.json())
+    .then(resItems => {
+      setItems(Object.keys(resItems));
+    })
+  
   return (
     <div id='catalog'>
       {items}
