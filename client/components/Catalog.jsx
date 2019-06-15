@@ -6,7 +6,8 @@ function Catalog() {
   fetch('/api/products')
     .then(res => res.json())
     .then(resItems => {
-      setItems(Object.keys(resItems));
+      const itemsArr = Array.isArray(resItems) ? resItems : Object.keys(resItems);
+      setItems(itemsArr);
     })
   
   return (
