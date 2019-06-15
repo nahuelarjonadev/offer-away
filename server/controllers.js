@@ -5,7 +5,7 @@ const controller = {}
 
 *  @param next - Callback Function w signature (err, users)
 */
-Controller.getAllItems = (next) => {
+controller.getAllItems = (next) => {
 
 }
 
@@ -15,7 +15,7 @@ Controller.getAllItems = (next) => {
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
 */
-Controller.updateItems = (req, res, next) => {
+controller.updateItems = (req, res, next) => {
 
 }
 
@@ -26,7 +26,7 @@ Controller.updateItems = (req, res, next) => {
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
 */
-Controller.createNewOrderDetail = (req, res, next) => {
+controller.createNewOrderDetail = (req, res, next) => {
 
 }
 
@@ -36,7 +36,7 @@ Controller.createNewOrderDetail = (req, res, next) => {
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
 */
-Controller.createNewOrder = (req, res, next) => {
+controller.createNewOrder = (req, res, next) => {
 
 }
 
