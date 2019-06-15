@@ -1,0 +1,14 @@
+header {
+  border: 1px solid black;
+  height: 10vh;
+}
+
+main {
+  border: 1px solid black;
+  height: 77.5vh;
+}
+
+footer {
+  border: 1px solid black;
+  height: 10vh;
+}
