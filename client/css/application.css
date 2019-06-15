@@ -15,7 +15,8 @@ header {
 
 main {
   border: 1px solid black;
-  height: 77.5vh;
+  height: 65vh;
+  padding: 4em;
 }
 
 footer {
@@ -36,4 +37,10 @@ h1 {
   font-size: 4em;
   font-weight: 900;
   font-style: italic;
+}
+
+#catalog {
+  border: 1px solid red;
+  height: 100%;
+  display: flex;
 }
