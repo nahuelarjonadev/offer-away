@@ -15,6 +15,11 @@ app.get('/catalog', (req, res) => {
 
 })
 
+//purchase route
+app.post('/purchase', (req, res) => {
+
+})
+
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
 })
