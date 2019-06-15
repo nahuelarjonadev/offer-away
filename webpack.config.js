@@ -6,7 +6,7 @@ const NODE_DEV_SERVER_URL = 'http://localhost:3000';
 module.exports = {
   entry: path.resolve(__dirname, 'client/index'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'client/dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -31,7 +31,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
-    contentBase: `${__dirname}/dist`,
+    contentBase: `${__dirname}/client/dist`,
     hot: true,
     proxy: {
       '/api': NODE_DEV_SERVER_URL,
