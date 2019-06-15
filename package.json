@@ -4,7 +4,7 @@
   "description": "snickers eCommerce",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r dotenv/config server/app.js & webpack-dev-server --config webpack.config.js --mode development",
+    "start": "nodemon -r dotenv/config server/server.js & webpack-dev-server --config webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "postgresql": "0.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
