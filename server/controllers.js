@@ -1,11 +1,11 @@
-const controller = {}
+const controllers = {}
 
 /**
 * getAllItems - returns all items from catalog
 
 *  @param next - Callback Function w signature (err, users)
 */
-controller.getAllItems = (next) => {
+controllers.getAllItems = (next) => {
 
 }
 
@@ -15,7 +15,7 @@ controller.getAllItems = (next) => {
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
 */
-controller.updateItems = (req, res, next) => {
+controllers.updateItems = (req, res, next) => {
 
 }
 
@@ -26,7 +26,7 @@ controller.updateItems = (req, res, next) => {
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
 */
-controller.createNewOrderDetail = (req, res, next) => {
+controllers.createNewOrderDetail = (req, res, next) => {
 
 }
 
@@ -36,8 +36,8 @@ controller.createNewOrderDetail = (req, res, next) => {
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
 */
-controller.createNewOrder = (req, res, next) => {
+controllers.createNewOrder = (req, res, next) => {
 
 }
 
-module.exports = controller
+module.exports = controllers
