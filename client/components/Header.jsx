@@ -5,6 +5,10 @@ import NavBar from './Navbar';
 function Header() {
   return (
     <header>
+      <div className='header-left'>
+        <img src="/static/logo" alt="Logo"/>
+        <h1>Snx</h1>
+      </div>
       <div className='header-right'>
         <NavBar />
         <CartBtn />
