@@ -1,7 +1,11 @@
 import React from 'react';
 
 function Header() {
-  return <header>Header</header>
+  return (
+    <header>
+      <CartBtn />
+    </header>
+  );
 }
 
 export default Header;
