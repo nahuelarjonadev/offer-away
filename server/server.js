@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //api route to return all items from catalog
-app.get('/products', (req, res) => {
-  //controller.getAllItems
+app.get('/products', controllers.getAllItems(), (req, res) => {
+
 })
 
 //api route to return subset of items from catalog based on category
