@@ -12,18 +12,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //api route to return all items from catalog
-app.get('/products', controllers.getAllItems, (req, res) => {
+app.get('/api/products', controllers.getAllItems, (req, res) => {
   //send back dummy data found in controllers
   res.status(200).json(res.locals.dummyData)
 })
 
 //api route to return subset of items from catalog based on category
-app.get('/products/categories', (req, res) => {
+app.get('/api/products/categories', (req, res) => {
   //controller.getFilteredItems
 })
 
 //api route for making a purchase
-app.post('/purchase', (req, res) => {
+app.post('/api/purchase', (req, res) => {
   //controller.updateItems
   //controller.createNewOrderDetail
   //controller.createNewOrder
