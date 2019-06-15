@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //api route to return all items from catalog
-app.get('/products', controllers.getAllItems(), (req, res) => {
+app.get('/products', controllers.getAllItems, (req, res) => {
   //send back dummy data found in controllers
   res.status(200).json(res.locals.dummyData)
 })
