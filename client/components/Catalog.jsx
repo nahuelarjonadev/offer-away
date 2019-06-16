@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 
-
 const mapStateToProps = store => ({
   products: store.products.products,
   //map our state to props
 })
 const mapDispatchtoProps = dispatch => ({
-  //map dispatch functions 
+  //map dispatch functions
 })
 class Catalog extends Component {
   render() {
@@ -18,7 +17,7 @@ class Catalog extends Component {
       </div>
     )
   }
-} 
+}
 
 export default connect(mapStateToProps, mapDispatchtoProps)(Catalog);
 
@@ -32,7 +31,7 @@ export default connect(mapStateToProps, mapDispatchtoProps)(Catalog);
   //     const itemsArr = Array.isArray(resItems) ? resItems : Object.keys(resItems);
   //     setItems(itemsArr);
   //   })
-  
+
 //   return (
 //     <div id='catalog'>
 //       {items}
@@ -41,3 +40,4 @@ export default connect(mapStateToProps, mapDispatchtoProps)(Catalog);
 // }
 
 //export default Catalog;
+
