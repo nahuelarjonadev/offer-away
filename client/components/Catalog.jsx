@@ -1,17 +1,37 @@
-import React from 'react';
+import React, {Component} from 'react'
+import { connect } from 'react-redux';
+import * as actions from '../actions/actions';
 
-const items = [
-  <div>item</div>,
-  <div>item</div>,
-  <div>item</div>,
-];
+const mapStateToProps = store => ({
+  products: store.products.products,
+  fetchProductsStatus: store.products.fetchProductsStatus,
+  fetchProductsError: store.products.fetchProductsError,
+  //map our state to props
+})
+const mapDispatchtoProps = dispatch => ({
+  fetchProducts: () => dispatch(actions.fetchProducts()),
+})
+class Catalog extends Component {
+  componentDidMount() {
+    this.props.fetchProducts();
+  }
 
-function Catalog() {
-  return (
-    <div id='catalog'>
-      {items}
-    </div>
-  );
+  render() {
+    console.log(this.props.products);
+    let productsArr = [];
+    // only map products in case the fetch is successfull
+    if (this.props.fetchProductsStatus === 'success') {
+      productsArr = this.props.products.map(product => <div className='product'>{product.product_name}</div>);
+    }
+    return (
+      <div id='catalog'>
+        { productsArr }
+        { this.props.fetchProductsStatus === 'pending' && <p>Loading...</p>}
+        { this.props.fetchProductsStatus === 'success' && <p>Succeded</p>}
+        { this.props.fetchProductsStatus === 'failure' && <p>Failed :(</p>}
+      </div>
+    )
+  }
 }
 
-export default Catalog;
+export default connect(mapStateToProps, mapDispatchtoProps)(Catalog);
