@@ -18,37 +18,19 @@ class Catalog extends Component {
 
   render() {
     console.log(this.props.products);
-    
-    const productsArr = this.props.products.map(product => product.name);
+    let productsArr = [];
+    if (this.props.fetchProductsStatus === 'success') {
+      productsArr = this.props.products.map(product => <div className='product'>{product.product_name}</div>);
+    }
     return (
       <div id='catalog'>
-        {productsArr}
+        { productsArr }
         { this.props.fetchProductsStatus === 'pending' && <p>Loading...</p>}
         { this.props.fetchProductsStatus === 'success' && <p>Succeded</p>}
-        { this.props.fetchProductsStatus === 'failure' && <p>Failed :( {this.props.fetchProductsError }</p>}
+        { this.props.fetchProductsStatus === 'failure' && <p>Failed :(</p>}
       </div>
     )
   }
-} 
+}
 
 export default connect(mapStateToProps, mapDispatchtoProps)(Catalog);
-
-//working version without redux implementation
-// function Catalog() {
-//   const [items, setItems] = useState([]);
-
-  // fetch('/api/products')
-  //   .then(res => res.json())
-  //   .then(resItems => {
-  //     const itemsArr = Array.isArray(resItems) ? resItems : Object.keys(resItems);
-  //     setItems(itemsArr);
-  //   })
-  
-//   return (
-//     <div id='catalog'>
-//       {items}
-//     </div>
-//   );
-// }
-
-//export default Catalog;
