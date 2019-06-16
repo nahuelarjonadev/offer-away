@@ -1,20 +1,31 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-
+import * as actions from '../actions/actions';
 
 const mapStateToProps = store => ({
   products: store.products.products,
+  fetchProductsStatus: store.products.fetchProductsStatus,
+  fetchProductsError: store.products.fetchProductsError,
   //map our state to props
 })
 const mapDispatchtoProps = dispatch => ({
-  //map dispatch functions 
+  fetchProducts: () => dispatch(actions.fetchProducts()),
 })
 class Catalog extends Component {
+  componentDidMount() {
+    this.props.fetchProducts();
+  }
+
   render() {
+    console.log(this.props.products);
+    
     const productsArr = this.props.products.map(product => product.name);
     return (
       <div id='catalog'>
         {productsArr}
+        { this.props.fetchProductsStatus === 'pending' && <p>Loading...</p>}
+        { this.props.fetchProductsStatus === 'success' && <p>Succeded</p>}
+        { this.props.fetchProductsStatus === 'failure' && <p>Failed :( {this.props.fetchProductsError }</p>}
       </div>
     )
   }
