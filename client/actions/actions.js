@@ -21,7 +21,7 @@ export const requestProductsFailure = (err) => ({
 export const fetchProducts = () => dispatch => {
   console.log('fetchProducts');
   dispatch(requestProducts());
-  return fetch('/api/productsa')
+  return fetch('/api/products')
     .then(res => res.json())
     .then(res => {
       if (!isValidProducts(res)) throw new Error('something went wrong')
