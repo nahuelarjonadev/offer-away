@@ -3,7 +3,12 @@ import { render } from "react-dom";
 import App from './components/App'
 import './css/reset.css';
 import './css/application.css';
+import { Provider } from 'react-redux';
+import store from './store';
 
 render (
-  <App />, document.getElementById('root')
+  <Provider store = {store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 )
