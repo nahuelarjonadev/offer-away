@@ -11,7 +11,8 @@ const pool = new Pool({
   _connectionTimeoutMillis: 2000,
 });
 
-const GET_ALL = `SELECT * FROM "Product";`;
+const GET_ALL = `SELECT "Product"."product_name", "size", "inventory", "price", "Category"."category_name" from 
+"Product" join "Category" on "Product"."category_id"="Category"."category_id";`;
 
 const productModel =  {
   getAll() {
