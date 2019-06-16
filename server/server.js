@@ -20,6 +20,10 @@ app.use(function (req, res, next) {
   return next(err);
 });
 
+app.use(function (err, req, res, next) {
+  res.status(404).json(err);
+});
+
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
 });
