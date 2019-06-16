@@ -1,13 +1,5 @@
 const Product = require('../models/product');
-
 const productCtrl = {};
-
-//DUMMY DATA - this isn't the right data format!! Just using it to send back to client :)
-const dummyData = {
-  'shoe1': '1',
-  'shoe2': '2',
-  'shoe3': '3',
-};
 
 /**
 * getAllProducts - returns all products
