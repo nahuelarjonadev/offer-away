@@ -1,24 +1,28 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux';
 
+
+const mapStateToProps = store => ({
+  products: store.products.products,
+  //map our state to props
+})
+const mapDispatchtoProps = dispatch => ({
+  //map dispatch functions 
+})
 class Catalog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [<div key={1}>shoe1</div>, <div>shoe2</div>,<div>shoe3</div>]
-    }
-  }
-
   render() {
+    const productsArr = this.props.products.map(product => product.name);
     return (
       <div id='catalog'>
-        {this.state.items}
+        {productsArr}
       </div>
     )
   }
 } 
 
-export default Catalog;
+export default connect(mapStateToProps, mapDispatchtoProps)(Catalog);
 
+//working version without redux implementation
 // function Catalog() {
 //   const [items, setItems] = useState([]);
 
@@ -35,3 +39,5 @@ export default Catalog;
 //     </div>
 //   );
 // }
+
+//export default Catalog;
