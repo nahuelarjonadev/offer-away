@@ -10,6 +10,9 @@ db.connect();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static('public'));
+
+// Serve API specific routes
 app.use('/api', routes);
 
 app.use(function (req, res, next) {
@@ -20,6 +23,7 @@ app.use(function (req, res, next) {
   return next(err);
 });
 
+// Dedicated error handler
 app.use(function (err, req, res, next) {
   res.status(404).json(err);
 });
