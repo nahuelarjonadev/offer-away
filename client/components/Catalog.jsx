@@ -7,9 +7,11 @@ function Catalog() {
     .then(res => res.json())
     .then(resItems => {
       const itemsArr = Array.isArray(resItems) ? resItems : Object.keys(resItems);
-      setItems(itemsArr);
-    })
-  
+      setItems(itemsArr.map(product => {
+        return product.product_name
+      }));
+    });
+
   return (
     <div id='catalog'>
       {items}
