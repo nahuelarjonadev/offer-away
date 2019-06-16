@@ -19,6 +19,7 @@ class Catalog extends Component {
   render() {
     console.log(this.props.products);
     let productsArr = [];
+    // only map products in case the fetch is successfull
     if (this.props.fetchProductsStatus === 'success') {
       productsArr = this.props.products.map(product => <div className='product'>{product.product_name}</div>);
     }
