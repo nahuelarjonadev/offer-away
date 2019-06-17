@@ -14,7 +14,7 @@ const pool = new Pool({
 const GET_ALL = `SELECT "Product"."product_name", "size", "inventory", "price", "Category"."category_name" from 
 "Product" join "Category" on "Product"."category_id"="Category"."category_id";`;
 
-const productModel =  {
+const productModel = {
   getAll() {
     return new Promise((resolve, reject) => {
       pool.query(GET_ALL, (err, result) => {
