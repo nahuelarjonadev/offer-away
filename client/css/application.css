@@ -110,14 +110,11 @@ h1 {
 }
 
 #checkoutModal {
-  /* display: flex;
-  align-items: center;
-  justify-content: center;  */
   height: 100%;
 }
 
 #checkoutSummary {
-  padding: 20px;
+  padding: 100px 30px;
   font-size: 1.7em;
 }
 
@@ -128,6 +125,11 @@ h1 {
 
 .productSummary {
   padding: 3px;
+}
+
+#checkoutSummary .purchaseHeader {
+  font-weight: 900;
+  margin: 20px 0;
 }
 
 .text {
