@@ -40,8 +40,8 @@ function PruchaseModal(props) {
               <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
             </ul>
           </div>
-          <button onClick={() => props.purchase(props.cart)}>Purchase</button>
-          <p>{props.sendPurchaseStatus}</p>
+          <a className='btn btn-blue' id='purchaseBtn' onClick={() => props.purchase(props.cart)}>Purchase</a>
+          <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
         </div>
       </div>
     </div>

@@ -69,7 +69,7 @@ export const requestPurchase = () => ({
   type: types.REQUEST_PURCHASE,
 });
 
-export const acceptPurchase = (cart) => ({
+export const acceptPurchase = (resMsg) => ({
   type: types.ACCEPT_PURCHASE,
-  payload: cart,
-})
+  payload: resMsg,
+});
