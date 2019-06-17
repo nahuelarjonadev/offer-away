@@ -38,3 +38,10 @@ export const addToCart = (id) => ({
   payload: id,
 });
 
+export const proceedToCheckout = () => ({
+  type: types.PROCEED_TO_CHECKOUT,
+});
+
+export const exitCheckout = () => ({
+  type: types.EXIT_CHECKOUT,
+});
