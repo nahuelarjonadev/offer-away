@@ -8,8 +8,10 @@ const mapStateToProps = store => ({
 
 function PruchaseModal(props) {
   return (
-    <div id="checkoutModal">
-      test
+    <div className="overlay">
+      <div className="modal">
+        test
+      </div>
     </div>
   );
 }
