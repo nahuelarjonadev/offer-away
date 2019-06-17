@@ -1,4 +1,4 @@
-import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, ADD_TO_CART, SUBTRACT_FROM_CART, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT } from '../constants/actionTypes';
+import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, ADD_TO_CART, SUBTRACT_FROM_CART, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT, ACCEPT_PURCHASE, REQUEST_PURCHASE } from '../constants/actionTypes';
 
 const initialState = {
   products: [{name: 'dummy'}, { name: 'shoe'}],
@@ -8,6 +8,8 @@ const initialState = {
   cart: {},
   currentCategory: '',
   onCheckoutPage: false,
+  sendPurchaseStatus: '',
+  sendPurchaseError: '',
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -27,12 +29,15 @@ const productsReducer = (state = initialState, action) => {
         fetchProductsError: action.payload,
       }
     case ADD_TO_CART:
-      const sku = action.payload;
-      const newQuantity = state.cart[sku] ? state.cart[sku] + 1 : 1;
+      const SKU = action.payload;
+      const product = Object.values(state.products).filter(p => p.SKU == SKU)[0];
+      const inStock = product ? product.inventory : 0;
+      const newQuantity = state.cart[SKU] ? state.cart[SKU] + 1 : 1;
+      if (newQuantity > inStock) return state;
       return {
         ...state,
         totalItemsInCart: state.totalItemsInCart + 1,
-        cart: Object.assign(state.cart, { [sku]: newQuantity })
+        cart: Object.assign(state.cart, { [SKU]: newQuantity })
       }
     case PROCEED_TO_CHECKOUT:
       return {
@@ -43,6 +48,16 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         onCheckoutPage: false,
+      }
+    case REQUEST_PURCHASE:
+      return {
+        ...state,
+        sendPurchaseStatus: 'Loading...',
+      }
+    case ACCEPT_PURCHASE:
+      return {
+        ...state,
+        sendPurchaseStatus: 'Congratulations!',
       }
     default:
       return state;
