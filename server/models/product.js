@@ -19,7 +19,7 @@ const GET_CATEGORY = `SELECT "Product"."SKU", "Product"."product_name", "size", 
 
 const UPDATE_INVENTORY = `UPDATE "Product" SET "inventory" = "inventory" - 1 WHERE "SKU"=`;
 
-const productModel =  {
+const productModel = {
   getAll() {
     return new Promise((resolve, reject) => {
       pool.query(GET_ALL, (err, result) => {
