@@ -97,16 +97,37 @@ h1 {
 .modal {
    width: 60%;
    height: 80%;
-   line-height: 200px;
+   /* line-height: 200px; */
    position: fixed;
    top: 50%;
    left: 50%;
-   margin-top: -25%;
+   margin-top: -400px;
    margin-left: -30%;
    background-color: #f1c40f;
    border-radius: 5px;
    text-align: center;
    z-index: 11; /* 1px higher than the overlay layer */
+}
+
+#checkoutModal {
+  /* display: flex;
+  align-items: center;
+  justify-content: center;  */
+  height: 100%;
+}
+
+#checkoutSummary {
+  padding: 20px;
+  font-size: 1.7em;
+}
+
+#checkoutSummary li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productSummary {
+  padding: 3px;
 }
 
 .text {
