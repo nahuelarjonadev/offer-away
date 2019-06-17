@@ -7,12 +7,12 @@ router.get('/products', productCtrl.getAllProducts, (req, res) => {
   res.status(200).json(res.locals.products)
 });
 
-//
-router.get('/products/categories', (req, res) => {
-  //controller.getFilteredItems
+// Get all products in specific category
+router.get('/products/:category', productCtrl.getCategory, (req, res) => {
+  res.status(200).json(res.locals.category)
 });
 
-//api route for making a purchase
+// api route for making a purchase
 router.post('/purchase', (req, res) => {
   //controller.updateItems
   //controller.createNewOrderDetail

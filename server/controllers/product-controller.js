@@ -10,13 +10,29 @@ const productCtrl = {};
 productCtrl.getAllProducts = (req, res, next) => {
   Product.getAll()
     .then(result => {
-      console.log(result);
       res.locals.products = result.rows;
       next();
     })
     .catch(err => {
       return next(err);
     });
+};
+
+/**
+ * getCategory - returns all products in a specific category
+ * @param req
+ * @param res
+ * @param next
+ */
+productCtrl.getCategory = (req, res, next) => {
+  Product.getCategory(req.params.category)
+    .then(result => {
+      res.locals.category = result.rows;
+      next();
+    })
+    .catch(err => {
+      return next(err);
+    })
 };
 
 /**
