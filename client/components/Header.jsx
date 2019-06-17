@@ -6,7 +6,7 @@ function Header() {
   return (
     <header>
       <div className='header-left'>
-        <img src="/static/logo" alt="Logo"/>
+        
         <h1>SNiX</h1>
       </div>
       <div className='header-right'>
