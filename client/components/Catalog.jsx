@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
+import Product from './Product';
 
 const mapStateToProps = store => ({
   products: store.products.products,
@@ -21,14 +22,14 @@ class Catalog extends Component {
     let productsArr = [];
     // only map products in case the fetch is successfull
     if (this.props.fetchProductsStatus === 'success') {
-      productsArr = this.props.products.map(product => <div className='product'>{product.product_name}</div>);
+      productsArr = this.props.products.map((product,i) => <div className='product' key={i}>{product.product_name}</div>);
     }
     return (
       <div id='catalog'>
         { productsArr }
-        { this.props.fetchProductsStatus === 'pending' && <p>Loading...</p>}
+       {/* { this.props.fetchProductsStatus === 'pending' && <p>Loading...</p>}
         { this.props.fetchProductsStatus === 'success' && <p>Succeded</p>}
-        { this.props.fetchProductsStatus === 'failure' && <p>Failed :(</p>}
+        { this.props.fetchProductsStatus === 'failure' && <p>Failed :(</p>} */}
       </div>
     )
   }
