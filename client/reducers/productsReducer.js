@@ -1,4 +1,4 @@
-import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, ADD_TO_CART, SUBTRACT_FROM_CART } from '../constants/actionTypes';
+import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, ADD_TO_CART, SUBTRACT_FROM_CART, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT } from '../constants/actionTypes';
 
 const initialState = {
   products: [{name: 'dummy'}, { name: 'shoe'}],
@@ -7,6 +7,7 @@ const initialState = {
   fetchProductsError: '',
   cart: {},
   currentCategory: '',
+  onCheckoutPage: false,
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -32,6 +33,16 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         totalItemsInCart: state.totalItemsInCart + 1,
         cart: Object.assign(state.cart, { [sku]: newQuantity })
+      }
+    case PROCEED_TO_CHECKOUT:
+      return {
+        ...state,
+        onCheckoutPage: true,
+      }
+    case EXIT_CHECKOUT:
+      return {
+        ...state,
+        onCheckoutPage: false,
       }
     default:
       return state;
