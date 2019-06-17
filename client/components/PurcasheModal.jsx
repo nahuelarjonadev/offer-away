@@ -6,10 +6,12 @@ import * as actions from '../actions/actions';
 const mapStateToProps = store => ({
   products: store.products.products,
   cart: store.products.cart,
+  sendPurchaseStatus: store.products.sendPurchaseStatus,
 })
 
 const mapDispatchToProps = dispatch => ({
   exitCheckout: () => dispatch(actions.exitCheckout()),
+  purchase: (cart) => dispatch(actions.sendPurchase(cart)),
 })
 
 function PruchaseModal(props) {
@@ -38,6 +40,8 @@ function PruchaseModal(props) {
               <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
             </ul>
           </div>
+          <button onClick={() => props.purchase(props.cart)}>Purchase</button>
+          <p>{props.sendPurchaseStatus}</p>
         </div>
       </div>
     </div>
