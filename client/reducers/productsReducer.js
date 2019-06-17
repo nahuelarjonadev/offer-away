@@ -57,7 +57,7 @@ const productsReducer = (state = initialState, action) => {
     case ACCEPT_PURCHASE:
       return {
         ...state,
-        sendPurchaseStatus: 'Congratulations!',
+        sendPurchaseStatus: action.payload,
       }
     default:
       return state;

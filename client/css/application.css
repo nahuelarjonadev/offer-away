@@ -103,8 +103,8 @@ h1 {
    left: 50%;
    margin-top: -400px;
    margin-left: -30%;
-   background-color: #f1c40f;
-   border-radius: 5px;
+   background-color: #ffdd99;
+   border-radius: 10px;
    text-align: center;
    z-index: 11; /* 1px higher than the overlay layer */
 }
@@ -132,7 +132,53 @@ h1 {
   margin: 20px 0;
 }
 
+#purchaseBtn {
+
+}
+
 .text {
   padding: .2em;
   font-size: 14px;
+}
+
+a.btn {
+  display: inline-block;
+  color: #666;
+  background-color: #eee;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+  padding: 20px 30px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-bottom-width: 3px;
+}
+
+a.btn:hover {
+  background-color: #e3e3e3;
+  border-color: rgba(0,0,0,0.5);
+}
+
+a.btn:active {
+  background-color: #CCC;
+  border-color: rgba(0,0,0,0.9);
+}
+
+a.btn.btn-blue {
+  background-color: #699DB6;
+  border-color: rgba(0,0,0,0.3);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+  color: #FFF;
+}
+
+a.btn.btn-blue:hover {
+  background-color: #4F87A2;
+  border-color: rgba(0,0,0,0.5);
+}
+
+a.btn.btn-blue:active {
+  background-color: #3C677B;
+  border-color: rgba(0,0,0,0.9);
 }
