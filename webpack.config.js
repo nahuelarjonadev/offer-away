@@ -35,6 +35,7 @@ module.exports = {
     hot: true,
     proxy: {
       '/api': NODE_DEV_SERVER_URL,
+      '/static': NODE_DEV_SERVER_URL,
     },
   },
 };
