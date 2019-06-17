@@ -1,7 +1,4 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux';
-
-
 
 class Product extends Component {
   render() {
@@ -16,7 +13,7 @@ class Product extends Component {
           <div> In-Stock: {product.inventory}</div>
           <div> Price: ${product.price}</div>
         </div>
-        <button id="addtocart" onClick={() => this.props.addToCart(product.sku)}> Add to Cart</button>
+        <button id="addtocart" onClick={() => this.props.addToCart(product.SKU)}> Add to Cart</button>
       </div>
     ));
  
