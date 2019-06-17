@@ -33,3 +33,8 @@ function isValidProducts(res) {
   return Array.isArray(res);
 }
 
+export const addToCart = (id) => ({
+  type: types.ADD_TO_CART,
+  payload: id,
+});
+
