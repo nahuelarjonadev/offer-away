@@ -43,7 +43,7 @@ productCtrl.getCategory = (req, res, next) => {
  * @param next
 */
 productCtrl.updateInventory = (req, res, next) => {
-  Product.updateInventory(req.body.SKU)
+  Product.updateInventory(req.body)
     .then(result => {
       res.locals.success = 'Congratulations on your new shoes!';
       next()
