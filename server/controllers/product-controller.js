@@ -40,9 +40,17 @@ productCtrl.getCategory = (req, res, next) => {
 
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
+ * @param next
 */
-productCtrl.updateItems = (req, res, next) => {
-
+productCtrl.updateInventory = (req, res, next) => {
+  Product.updateInventory(req.body.SKU)
+    .then(result => {
+      res.locals.success = 'Congratulations on your new shoes!';
+      next()
+    })
+    .catch(err => {
+      return next(err)
+    })
 };
 
 
