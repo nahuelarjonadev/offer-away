@@ -22,6 +22,7 @@ app.use(function (req, res, next) {
   return next(err);
 });
 
+// Dedicated error handler
 app.use(function (err, req, res, next) {
   res.status(404).json(err);
 });

@@ -13,11 +13,8 @@ router.get('/products/:category', productCtrl.getCategory, (req, res) => {
 });
 
 // api route for making a purchase
-router.post('/purchase', (req, res) => {
-  //controller.updateItems
-  //controller.createNewOrderDetail
-  //controller.createNewOrder
-
+router.post('/purchase', productCtrl.updateInventory, (req, res) => {
+  res.status(200).send(res.locals.success)
   //STRETCH FEATURE: authentication for customer
 });
 
