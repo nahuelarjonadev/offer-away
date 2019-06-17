@@ -4,7 +4,7 @@ function CartBtn(props) {
   return (
     <button id='cart-btn'>
       <p>{props.totalItemsInCart}</p>
-      <img src="/static/icon/cart" alt="Cart Img"></img>
+      <img src="/static/cart-logo3.png" width="50px" alt="Cart Img"></img>
     </button>
   );
 }
