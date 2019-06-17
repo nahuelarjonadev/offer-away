@@ -14,13 +14,24 @@ const pool = new Pool({
 const GET_ALL = `SELECT "Product"."product_name", "size", "inventory", "price", "Category"."category_name" from 
 "Product" join "Category" on "Product"."category_id"="Category"."category_id";`;
 
-const productModel =  {
+const GET_CATEGORY = `SELECT "Product"."product_name", "size", "inventory", "price", "Category"."category_name" from
+"Product" join "Category" on "Product"."category_id"="Category"."category_id" WHERE "Category"."category_name"=`;
+
+const productModel = {
   getAll() {
     return new Promise((resolve, reject) => {
       pool.query(GET_ALL, (err, result) => {
         if (err) return reject(err);
         resolve(result);
       });
+    })
+  },
+  getCategory(categoryName) {
+    return new Promise((resolve, reject) => {
+      pool.query(GET_CATEGORY + `'${categoryName}'` + ";", (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+      })
     })
   }
 };
