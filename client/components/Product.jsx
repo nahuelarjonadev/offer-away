@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 
 class Product extends Component {
   render() {
-    console.log(this.props.products);
     let productsArr = [];
     productsArr = this.props.products.map((product,i) => (
       <div className='product' key={i}>
