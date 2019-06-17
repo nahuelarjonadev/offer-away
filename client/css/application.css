@@ -63,8 +63,11 @@ h1 {
   flex: 1 0 20%;
   width: 200px;
   height: 47%;
-  
- 
+}
+
+#cart-btn {
+  font-size: 1em;
+  background-color: white;
 }
 
 #addtocart{
