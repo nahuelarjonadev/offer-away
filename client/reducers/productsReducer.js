@@ -5,7 +5,7 @@ const initialState = {
   totalItemsInCart: 0,
   fetchProductsStatus: '',
   fetchProductsError: '',
-  cart: [],
+  cart: {},
   currentCategory: '',
 }
 
@@ -24,6 +24,14 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         fetchProductsStatus: 'failure',
         fetchProductsError: action.payload,
+      }
+    case ADD_TO_CART:
+      const sku = action.payload;
+      const newQuantity = state.cart[sku] ? state.cart[sku] + 1 : 1;
+      return {
+        ...state,
+        totalItemsInCart: state.totalItemsInCart + 1,
+        cart: Object.assign(state.cart, { [sku]: newQuantity })
       }
     default:
       return state;
