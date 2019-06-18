@@ -1,16 +1,14 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const db = require('./db');
 const routes = require('./routes/api');
 const { PORT } = process.env;
 const app = express();
 
-db.connect();
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Static route to access images hosted in server
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/api', routes);
 
