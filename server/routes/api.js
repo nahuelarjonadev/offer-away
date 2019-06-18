@@ -12,10 +12,9 @@ router.get('/products/:category', productCtrl.getCategory, (req, res) => {
   res.status(200).json(res.locals.category)
 });
 
-// api route for making a purchase
+// Post route to update inventory upon clicking purchase button
 router.post('/purchase', productCtrl.updateInventory, (req, res) => {
   res.status(200).send(res.locals.success)
-  //STRETCH FEATURE: authentication for customer
 });
 
 module.exports = router;

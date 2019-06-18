@@ -29,15 +29,29 @@ const productsReducer = (state = initialState, action) => {
         fetchProductsError: action.payload,
       }
     case ADD_TO_CART:
-      const SKU = action.payload;
-      const product = Object.values(state.products).filter(p => p.SKU == SKU)[0];
-      const inStock = product ? product.inventory : 0;
-      const newQuantity = state.cart[SKU] ? state.cart[SKU] + 1 : 1;
+      let SKU = action.payload;
+      let product = Object.values(state.products).filter(p => p.SKU == SKU)[0];
+      let inStock = product ? product.inventory : 0;
+      let newQuantity = state.cart[SKU] ? state.cart[SKU] + 1 : 1;
       if (newQuantity > inStock) return state;
       return {
         ...state,
         totalItemsInCart: state.totalItemsInCart + 1,
         cart: Object.assign(state.cart, { [SKU]: newQuantity })
+      }
+    case SUBTRACT_FROM_CART:
+      SKU = action.payload;
+      product = Object.values(state.products).filter(p => p.SKU == SKU)[0];
+      // inStock = product ? product.inventory : 0;
+      newQuantity = state.cart[SKU] ? state.cart[SKU] - 1 : -1;
+      if (newQuantity < 0) return state;
+      const cartClone = JSON.parse(JSON.stringify(state.cart));
+      if (newQuantity === 0) delete cartClone[[SKU]];
+      else Object.assign(cartClone, { [SKU]: newQuantity });
+      return {
+        ...state,
+        totalItemsInCart: state.totalItemsInCart - 1,
+        cart: cartClone,
       }
     case PROCEED_TO_CHECKOUT:
       return {
