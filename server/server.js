@@ -5,18 +5,10 @@ const routes = require('./routes/api');
 const { PORT } = process.env;
 const app = express();
 
-<<<<<<< HEAD
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-//static route to serve static files such as icons and shoe images
-=======
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Static route to access images hosted in server
->>>>>>> 81b15f987052d85065c417a9519e168dd057de23
 app.use('/static', express.static(path.join(__dirname, 'public')))
 
 //express router
