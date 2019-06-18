@@ -10,10 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Static route to access images hosted in server
 app.use('/static', express.static(path.join(__dirname, 'public')))
+
+//express router
 app.use('/api', routes);
 
+//404 err handling
 app.use(function (req, res, next) {
-  //404
   res.locals.message = 'PAGE NOT FOUND';
   const err = new Error('RESOURCE NOT FOUND');
   err.status = 404;
