@@ -43,10 +43,10 @@ const productsReducer = (state = initialState, action) => {
       SKU = action.payload;
       product = Object.values(state.products).filter(p => p.SKU == SKU)[0];
       // inStock = product ? product.inventory : 0;
-      newQuantity = state.cart[SKU] ? state.cart[SKU] - 1 : 0;
+      newQuantity = state.cart[SKU] ? state.cart[SKU] - 1 : -1;
       if (newQuantity < 0) return state;
       const cartClone = JSON.parse(JSON.stringify(state.cart));
-      if (newQuantity === 0) delete cartClone[SKU];
+      if (newQuantity === 0) delete cartClone[[SKU]];
       else Object.assign(cartClone, { [SKU]: newQuantity });
       return {
         ...state,
