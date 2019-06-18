@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const NODE_DEV_SERVER_URL = 'http://localhost:3000';
+const NODE_DEV_SERVER_URL = `http://localhost:${process.env.PORT}`;
 
 module.exports = {
   entry: path.resolve(__dirname, 'client/index'),
