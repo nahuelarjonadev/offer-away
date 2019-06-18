@@ -69,7 +69,11 @@ export const requestPurchase = () => ({
   type: types.REQUEST_PURCHASE,
 });
 
-export const acceptPurchase = (resMsg) => ({
-  type: types.ACCEPT_PURCHASE,
-  payload: resMsg,
-});
+export const acceptPurchase = (resMsg) => dispatch => {
+  dispatch(fetchProducts())
+  return dispatch({
+    type: types.ACCEPT_PURCHASE,
+    payload: resMsg,
+  });
+}
+
