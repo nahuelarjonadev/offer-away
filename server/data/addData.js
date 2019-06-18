@@ -1,15 +1,4 @@
-const { Pool } = require('pg');
-
-const pool = new Pool({
-  user: "xqtwqblw",
-  host: "raja.db.elephantsql.com",
-  database: "xqtwqblw",
-  password: "HOn-ooZWg4SonxCxotW_5cBofitQIVAX",
-  port: 5432,
-  max: 100,
-  idleTimeoutMillis: 30000,
-  _connectionTimeoutMillis: 2000,
-});
+const pool = require('../pool');
 
 const DROP_TABLES = `DROP TABLE "Category", "Product";`;
 
@@ -95,6 +84,11 @@ dropTables()
   .then(insertCategory)
   .then(createProduct)
   .then(insertProduct)
+  .then(() => {
+    console.log('Successfuly reseted the data');
+    return pool.end();
+  })
   .catch((err) => {
-    console.log(err)
+    console.error(err);
+    return pool.end();
   });
