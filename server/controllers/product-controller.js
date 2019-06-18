@@ -20,8 +20,8 @@ productCtrl.getAllProducts = (req, res, next) => {
 
 /**
  * getCategory - returns all products in a specific category
- * @param req
- * @param res
+ * @param req - http.IncomingRequest
+ * @param res - http.ServerResponse
  * @param next
  */
 productCtrl.getCategory = (req, res, next) => {
@@ -51,27 +51,6 @@ productCtrl.updateInventory = (req, res, next) => {
     .catch(err => {
       return next(err)
     })
-};
-
-
-/**
-* createNewOrderDetail - creates an order detail for each shoe purchased
-
-* @param req - http.IncomingRequest
-* @param res - http.ServerResponse
-*/
-productCtrl.createNewOrderDetail = (req, res, next) => {
-
-};
-
-/**
-* createNewOrder - creates an aggregated collection of the orders placed
-
-* @param req - http.IncomingRequest
-* @param res - http.ServerResponse
-*/
-productCtrl.createNewOrder = (req, res, next) => {
-
 };
 
 module.exports = productCtrl;
