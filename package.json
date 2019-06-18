@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon -r dotenv/config server/server.js & webpack-dev-server -r dotenv/config --config webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "populate": "node server/data/addData.js"
+    "populate": "node -r dotenv/config server/data/addData.js"
   },
   "repository": {
     "type": "git",
