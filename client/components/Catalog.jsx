@@ -11,7 +11,7 @@ const mapStateToProps = store => ({
 })
 const mapDispatchtoProps = dispatch => ({
   fetchProducts: () => dispatch(actions.fetchProducts()),
-  fetchImages: () => dispatch(actions.fetchImages()),
+  addToCart: (productId) => dispatch(actions.addToCart(productId)),
 })
 class Catalog extends Component {
   componentDidMount() {
@@ -27,7 +27,7 @@ class Catalog extends Component {
     // }
     return (
       <div id='catalogview'>
-        <Product products={this.props.products}/>
+        <Product addToCart={this.props.addToCart} products={this.props.products}/>
     
       </div>
     )

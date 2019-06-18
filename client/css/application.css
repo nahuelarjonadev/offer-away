@@ -63,8 +63,11 @@ h1 {
   flex: 1 0 20%;
   width: 200px;
   height: 47%;
-  
- 
+}
+
+#cart-btn {
+  font-size: 1em;
+  background-color: white;
 }
 
 #addtocart{
@@ -79,7 +82,103 @@ h1 {
   padding-bottom: .5em;
 }
 
+/* verlay styles, all needed */
+.overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(0,0,0,0.5);
+   z-index: 10;
+}
+
+/* just some content with arbitrary styles for explanation purposes */
+.modal {
+   width: 60%;
+   height: 80%;
+   /* line-height: 200px; */
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   margin-top: -400px;
+   margin-left: -30%;
+   background-color: #ffdd99;
+   border-radius: 10px;
+   text-align: center;
+   z-index: 11; /* 1px higher than the overlay layer */
+}
+
+#checkoutModal {
+  height: 100%;
+}
+
+#checkoutSummary {
+  padding: 100px 30px;
+  font-size: 1.7em;
+}
+
+#checkoutSummary li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productSummary {
+  padding: 3px;
+}
+
+#checkoutSummary .purchaseHeader {
+  font-weight: 900;
+  margin: 20px 0;
+}
+
+#purchaseBtn {
+
+}
+
 .text {
   padding: .2em;
   font-size: 14px;
+}
+
+a.btn {
+  display: inline-block;
+  color: #666;
+  background-color: #eee;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+  padding: 20px 30px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-bottom-width: 3px;
+}
+
+a.btn:hover {
+  background-color: #e3e3e3;
+  border-color: rgba(0,0,0,0.5);
+}
+
+a.btn:active {
+  background-color: #CCC;
+  border-color: rgba(0,0,0,0.9);
+}
+
+a.btn.btn-blue {
+  background-color: #699DB6;
+  border-color: rgba(0,0,0,0.3);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+  color: #FFF;
+}
+
+a.btn.btn-blue:hover {
+  background-color: #4F87A2;
+  border-color: rgba(0,0,0,0.5);
+}
+
+a.btn.btn-blue:active {
+  background-color: #3C677B;
+  border-color: rgba(0,0,0,0.9);
 }
