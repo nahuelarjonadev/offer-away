@@ -1,10 +1,10 @@
 import React from 'react';
 
-function CartBtn() {
+function CartBtn(props) {
   return (
-    <button id='cart-btn'>
-      <p>#items</p>
-      <img src="/static/icon/cart" alt="Cart Img"></img>
+    <button id='cart-btn' onClick={props.proceedToCheckout}>
+      <p>{props.totalItemsInCart}</p>
+      <img src="/static/cart-logo3.png" width="50px" alt="Cart Img"></img>
     </button>
   );
 }
