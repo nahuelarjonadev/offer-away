@@ -118,7 +118,7 @@ h1 {
 /* just some content with arbitrary styles for explanation purposes */
 .modal {
    width: 60%;
-   height: 80%;
+   /* height: 80%; */
    /* line-height: 200px; */
    position: fixed;
    top: 50%;
@@ -129,6 +129,7 @@ h1 {
    border-radius: 10px;
    text-align: center;
    z-index: 11; /* 1px higher than the overlay layer */
+   padding: 30px 0;
 }
 
 #checkoutModal {
@@ -136,8 +137,8 @@ h1 {
 }
 
 #checkoutSummary {
-  padding: 100px 30px;
-  font-size: 1.7em;
+  padding: 50px 30px;
+  font-size: 1.5em;
 }
 
 #checkoutSummary li {
