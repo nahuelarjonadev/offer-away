@@ -13,6 +13,7 @@ class Product extends Component {
           <div> Price: ${product.price}</div>
         </div>
         <button id="addtocart" onClick={() => this.props.addToCart(product.SKU)}> Add to Cart</button>
+        <button id="subtractFromCart" onClick={() => this.props.subtractFromCart(product.SKU)}> Subtract from Cart</button>
       </div>
     ));
  

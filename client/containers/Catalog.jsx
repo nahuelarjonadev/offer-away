@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-import Product from './Product';
+import Product from '../components/Product';
 
 const mapStateToProps = store => ({
   products: store.products.products,
@@ -12,6 +12,7 @@ const mapStateToProps = store => ({
 const mapDispatchtoProps = dispatch => ({
   fetchProducts: () => dispatch(actions.fetchProducts()),
   addToCart: (productId) => dispatch(actions.addToCart(productId)),
+  subtractFromCart: (productId) => dispatch(actions.subtractFromCart(productId)),
 })
 class Catalog extends Component {
   componentDidMount() {
@@ -19,15 +20,9 @@ class Catalog extends Component {
   }
 
   render() {
-    //console.log(this.props.products);
-    // let productsArr = [];
-    // // only map products in case the fetch is successfull
-    // if (this.props.fetchProductsStatus === 'success') {
-    //   productsArr = this.props.products.map((product,i) => <div className='product' key={i}>{product.product_name}</div>);
-    // }
     return (
       <div id='catalogview'>
-        <Product addToCart={this.props.addToCart} products={this.props.products}/>
+        <Product subtractFromCart={this.props.subtractFromCart} addToCart={this.props.addToCart} products={this.props.products}/>
     
       </div>
     )
