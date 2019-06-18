@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
   purchase: (cart) => dispatch(actions.sendPurchase(cart)),
 })
 
-function PruchaseModal(props) {
+function PurchaseModal(props) {
   let purchaseTotalPrice = 0;
   const products = Object.entries(props.cart).map(([SKU, quantity]) => {
     const product = Object.values(props.products).filter(p => p.SKU == SKU)[0];
@@ -48,4 +48,4 @@ function PruchaseModal(props) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PruchaseModal);
+export default connect(mapStateToProps, mapDispatchToProps)(PurchaseModal);
