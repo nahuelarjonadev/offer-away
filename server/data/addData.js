@@ -1,4 +1,10 @@
 const pool = require('../pool');
+if (pool.totalCount > 0) {
+  console.warn('totalConnections from the pool should be 0');
+  process.exitCode = 1;
+  return;
+}
+
 
 const DROP_TABLES = `DROP TABLE "Category", "Product";`;
 
@@ -58,7 +64,8 @@ const insertCategory = () => {
       resolve(result)
     })
   }
-)};
+  )
+};
 
 const createProduct = () => {
   return new Promise((resolve, reject) => {
