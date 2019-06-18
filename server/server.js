@@ -6,16 +6,18 @@ const routes = require('./routes/api');
 const { PORT } = process.env;
 const app = express();
 
-db.connect();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//static route to serve static files such as icons and shoe images
 app.use('/static', express.static(path.join(__dirname, 'public')))
+
+//express router
 app.use('/api', routes);
 
+//404 err handling
 app.use(function (req, res, next) {
-  //404
   res.locals.message = 'PAGE NOT FOUND';
   const err = new Error('RESOURCE NOT FOUND');
   err.status = 404;
