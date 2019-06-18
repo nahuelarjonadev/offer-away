@@ -39,6 +39,11 @@ export const addToCart = (id) => ({
   payload: id,
 });
 
+export const subtractFromCart = (id) => ({
+  type: types.SUBTRACT_FROM_CART,
+  payload: id,
+});
+
 export const proceedToCheckout = () => ({
   type: types.PROCEED_TO_CHECKOUT,
 });
