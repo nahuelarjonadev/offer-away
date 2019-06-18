@@ -48,6 +48,8 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         onCheckoutPage: false,
+        sendPurchaseStatus: '',
+
       }
     case REQUEST_PURCHASE:
       return {
@@ -58,6 +60,8 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         sendPurchaseStatus: action.payload,
+        totalItemsInCart: 0,
+        cart: {},
       }
     default:
       return state;
