@@ -11,6 +11,7 @@ const UPDATE_INVENTORY = `UPDATE "Product" SET "inventory" = "inventory" - `;
 const UPDATE_SKU = ` WHERE "SKU"=`;
 
 const productModel = {
+  //returns all shoes from database
   getAll() {
     return new Promise((resolve, reject) => {
       pool.query(GET_ALL, (err, result) => {
@@ -19,6 +20,7 @@ const productModel = {
       });
     })
   },
+  //returns all shoes based off brand name
   getCategory(categoryName) {
     return new Promise((resolve, reject) => {
       pool.query(GET_CATEGORY + `'${categoryName}'` + ";", (err, result) => {
@@ -27,6 +29,7 @@ const productModel = {
       })
     })
   },
+  //takes in cart obj with keys of SKU number and values of the quantities bought of each
   updateInventory(cart) {
     return new Promise((resolve, reject) => {
       const SKUs = Object.keys(cart);
