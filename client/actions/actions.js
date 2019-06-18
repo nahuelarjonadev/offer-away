@@ -29,6 +29,7 @@ export const fetchProducts = () => dispatch => {
     })
     .catch(err => dispatch(requestProductsFailure(err)))
 }
+
 function isValidProducts(res) {
   return Array.isArray(res);
 }
@@ -38,3 +39,37 @@ export const addToCart = (id) => ({
   payload: id,
 });
 
+export const proceedToCheckout = () => ({
+  type: types.PROCEED_TO_CHECKOUT,
+});
+
+export const exitCheckout = () => ({
+  type: types.EXIT_CHECKOUT,
+});
+
+export const sendPurchase = (cart) => dispatch => {
+  console.log('requestPurchase');
+  dispatch(requestProducts());
+  return fetch('/api/purchase', {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(cart), // data can be `string` or {object}!
+      headers:{
+      'Content-Type': 'application/json'
+      },
+    })
+    .then(res => res.json())
+    .then(res => {
+      // if (!isValidProducts(res)) throw new Error('something went wrong')
+      return dispatch(acceptPurchase(res))
+    })
+    .catch(err => console.error(err));
+}
+
+export const requestPurchase = () => ({
+  type: types.REQUEST_PURCHASE,
+});
+
+export const acceptPurchase = (resMsg) => ({
+  type: types.ACCEPT_PURCHASE,
+  payload: resMsg,
+});
