@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
-import MainDisplay from './MainDisplay'
-import Footer from './Footer'
+import MainDisplay from '../components/MainDisplay'
+import Footer from '../components/Footer'
 import PurchaseModal from './PurcasheModal';
 import { connect } from "react-redux";
 

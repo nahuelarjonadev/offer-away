@@ -1,6 +1,6 @@
 import React from 'react';
-import CartBtn from './CartBtn';
-import NavBar from './Navbar';
+import CartBtn from '../components/CartBtn';
+import NavBar from '../components/Navbar';
 import { connect } from "react-redux";
 
 import * as actions from '../actions/actions';
