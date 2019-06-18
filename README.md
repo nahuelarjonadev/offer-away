@@ -1,6 +1,9 @@
 # jigglypuff
 snickers eCommerce
 
+# IMPORTANT! ! !
+When you clone this repo, make sure to create a .env file on the root of your project. Make sure to setup a PORT variable in there!
+
 # Style guide
 Consistent indentation
 Always close braces on their own line
