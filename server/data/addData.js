@@ -1,5 +1,6 @@
 const { Pool } = require('pg');
 
+//repopulates database
 const pool = new Pool({
   user: "xqtwqblw",
   host: "raja.db.elephantsql.com",
@@ -69,7 +70,8 @@ const insertCategory = () => {
       resolve(result)
     })
   }
-)};
+  )
+};
 
 const createProduct = () => {
   return new Promise((resolve, reject) => {
