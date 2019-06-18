@@ -45,7 +45,7 @@ productCtrl.getCategory = (req, res, next) => {
 productCtrl.updateInventory = (req, res, next) => {
   Product.updateInventory(req.body)
     .then(result => {
-      res.locals.success = 'Congratulations on your new shoes!';
+      res.locals.success = '"Congratulations on your new shoes!"';
       next()
     })
     .catch(err => {
