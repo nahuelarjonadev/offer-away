@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const productCtrl = require('../controllers/product-controller');
 
-
+// created a delete route
+// will return an object {success: true, result: result} back to the client
 router.delete('/delete', productCtrl.deleteProduct, (req, res) => {
   res.status(200).send(res.locals.deleted)
 })
