@@ -1,6 +1,6 @@
 const pool = require('../pool');
 
-const GET_ALL = `SELECT "Product"."SKU", "Product"."product_name", "size", "inventory", "price", "Category"."category_name" from 
+const GET_ALL = `SELECT "Product"."SKU", "Product"."product_name", "size", "inventory", "price", "Category"."category_name" from
 "Product" join "Category" on "Product"."category_id"="Category"."category_id";`;
 
 const GET_CATEGORY = `SELECT "Product"."SKU", "Product"."product_name", "size", "inventory", "price", "Category"."category_name" from
@@ -10,7 +10,13 @@ const UPDATE_INVENTORY = `UPDATE "Product" SET "inventory" = "inventory" - `;
 
 const UPDATE_SKU = ` WHERE "SKU"=`;
 
+const MATCH_SKU = `SELECT * FROM "Product" WHERE "SKU"=`;
+
+const DELETE_SKU = `DELETE FROM "Product" WHERE "SKU"=`;
+const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5)`
+
 const productModel = {
+  //returns all shoes from database
   getAll() {
     return new Promise((resolve, reject) => {
       pool.query(GET_ALL, (err, result) => {
@@ -19,6 +25,7 @@ const productModel = {
       });
     })
   },
+  //returns all shoes based off brand name
   getCategory(categoryName) {
     return new Promise((resolve, reject) => {
       pool.query(GET_CATEGORY + `'${categoryName}'` + ";", (err, result) => {
@@ -27,6 +34,7 @@ const productModel = {
       })
     })
   },
+  //takes in cart obj with keys of SKU number and values of the quantities bought of each
   updateInventory(cart) {
     return new Promise((resolve, reject) => {
       const SKUs = Object.keys(cart);
@@ -36,6 +44,31 @@ const productModel = {
           resolve(result);
         })
       }
+    })
+  },
+  // add method to delete product
+  deleteProduct(SKU) {
+    return new Promise((resolve, reject) => {
+      const queryString = MATCH_SKU + `${SKU};`;
+      pool.query(queryString, (err, result) => {
+        if (err) return reject(err);
+        if (!result) return reject('Product not found');
+        pool.query(DELETE_SKU + `${SKU}`), (err, result) => {
+          if (err) return reject(err);
+          resolve(result);
+        }
+        resolve(result);
+      })
+    })
+  },
+  // attributes will be request.body
+  addProduct(productInfo) {
+    const productValues = [productInfo.category, productInfo.productName, productInfo.size, productInfo.inventory, productInfo.price];
+    return new Promise((resolve, reject) => {
+      pool.query(INSERT_PRODUCT, productValues, (err, result) => {
+        if (err) return reject(err);
+        resolve();
+      })
     })
   }
 };
