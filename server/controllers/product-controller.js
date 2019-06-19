@@ -78,7 +78,8 @@ productCtrl.deleteProduct = (req, res, next) => {
  */
  productCtrl.addProduct = (req, res, next) => {
    Product.addProduct(req.body)
-    .then(() => {
+    .then((SKU) => {
+      res.locals.SKU = SKU;
       res.locals.response = {
         success: true,
         result: req.body,
