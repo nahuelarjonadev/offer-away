@@ -49,7 +49,7 @@ const productModel = {
     return new Promise((resolve, reject) => {
       pool.query(INSERT_PRODUCT, productValues, (err, result) => {
         if (err) return reject(err);
-        resolve(result);
+        resolve();
       })
     })
   }
