@@ -40,7 +40,7 @@ productCtrl.getCategory = (req, res, next) => {
 
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
- * @param next
+* @param next
 */
 productCtrl.updateInventory = (req, res, next) => {
   Product.updateInventory(req.body)
@@ -49,8 +49,45 @@ productCtrl.updateInventory = (req, res, next) => {
       next()
     })
     .catch(err => {
+      return next(err);
+    })
+  
+};
+
+// SKU will be brought in the request body
+// Will invoke our delete product method, which will delete our product from our DB
+// then store our deleted object in our res.locals, which will be sent to our client
+productCtrl.deleteProduct = (req, res, next) => {
+  Product.deleteProduct(req.body.SKU)
+    .then(result => {
+      res.locals.deleted = {
+        "success": true,
+        "result": result.rows
+      }
+      next()
+    })
+    .catch(err => {
       return next(err)
     })
-};
+}
+/**
+ * addProduct - adds a product to the database based on form input
+ * @param req - http.IncomingRequest
+ * @param res - http.ServerResponse
+ * @param next
+ */
+ productCtrl.addProduct = (req, res, next) => {
+   Product.addProduct(req.body)
+    .then(() => {
+      res.locals.response = {
+        success: true,
+        result: req.body,
+      };
+      next();
+    })
+    .catch(err => {
+      return next(err);
+    })
+ }
 
 module.exports = productCtrl;

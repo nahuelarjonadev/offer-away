@@ -1,23 +1,27 @@
 import React from 'react';
-import Header from './Header';
-import MainDisplay from '../components/MainDisplay'
-import Footer from '../components/Footer'
-import PurchaseModal from './PurcasheModal';
-import { connect } from "react-redux";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
-const mapStateToProps = store => ({
-  onCheckoutPage: store.products.onCheckoutPage,
-})
+import Purchase from '../containers/Purchase';
+import Home from '../containers/Home';
+import Header from '../containers/Header';
+import Footer from '../components/Footer';
+import NotFound from '../components/NotFound';
+import Business from '../containers/Business';
 
-function App({ onCheckoutPage }) {
+
+function App() {
   return (
-    <div>
+    <Router>
       <Header />
-      <MainDisplay />
+      <Switch>
+        <Route path='/(home)?' exact component={Home} />
+        <Route path='/purchase' component={Purchase} />
+        <Route path='/business' component={Business} />
+        <Route component={NotFound} />
+      </Switch>
       <Footer />
-      {onCheckoutPage && <PurchaseModal />}
-    </div>
+    </Router>
   );
 }
 
-export default connect(mapStateToProps)(App);
+export default App;
