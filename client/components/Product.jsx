@@ -5,7 +5,7 @@ class Product extends Component {
     let productsArr = [];
     productsArr = this.props.products.map((product,i) => (
       <div className='product' key={i}>
-        <img src={`/static/${product.SKU}.jpg`} width='45%' height="45%"/>
+        <img src={`/static/productImages/${product.SKU}.jpg`} width='45%' height="45%"/>
         <div id='description'>Description: {product.product_name} </div>
         <div className='text'>
           <div> Size: {product.size}</div>
