@@ -13,6 +13,19 @@ categoryCtrl.getCategories = (req, res, next) => {
     .catch((err) => {
       next(err);
     })
+};
+
+categoryCtrl.createCategory = (req, res, next) => {
+  categoryDB.createCategory()
+    .then(() => {
+      res.locals.response = {
+        success: true,
+        result: req.body,
+      }
+    })
+    .catch((err) => {
+      next(err);
+    })
 }
 
 module.exports = categoryCtrl;
