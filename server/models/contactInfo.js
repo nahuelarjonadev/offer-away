@@ -4,7 +4,6 @@ const INSERT_PRODUCT = `INSERT INTO "Contact_Info" ("business_name", "email_addr
 
 // makes the query but if there's a conflict on business name, it will update
 const contactModel = {
-
   insertContactInfo(contact){
     const contactValues = [contact.businessName, contact.email, contact.address, contact.phone];
     console.log(contactValues)
@@ -15,7 +14,6 @@ const contactModel = {
       })
     })
   }
-
 }
 
 module.exports = contactModel;
