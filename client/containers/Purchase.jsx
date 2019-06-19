@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Home from "../containers/Home";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
 import * as actions from '../actions/actions';
 

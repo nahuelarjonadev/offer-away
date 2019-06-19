@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import MainDisplay from '../components/MainDisplay'
 import Footer from '../components/Footer'
-import PurchaseModal from './PurcasheModal';
+import PurchaseModal from './PurchaseModal';
 import { connect } from "react-redux";
 
 const mapStateToProps = store => ({
