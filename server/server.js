@@ -24,7 +24,10 @@ app.use(function (req, res, next) {
 
 // Dedicated error handler
 app.use(function (err, req, res, next) {
-  res.status(404).json(err);
+  res.status(404).json({
+    success: false,
+    err: err.message,
+  });
 });
 
 app.listen(PORT, () => {
