@@ -6,8 +6,8 @@ import * as actions from '../actions/actions';
 
 const mapStateToProps = store => ({
   products: store.products.products,
-  cart: store.products.cart,
-  sendPurchaseStatus: store.products.sendPurchaseStatus,
+  cart: store.cart.cart,
+  sendPurchaseStatus: store.cart.sendPurchaseStatus,
 })
 
 const mapDispatchToProps = dispatch => ({

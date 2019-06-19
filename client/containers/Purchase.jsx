@@ -6,12 +6,11 @@ import * as actions from '../actions/actions';
 
 const mapStateToProps = store => ({
   products: store.products.products,
-  cart: store.products.cart,
-  sendPurchaseStatus: store.products.sendPurchaseStatus,
+  cart: store.cart.cart,
+  sendPurchaseStatus: store.cart.sendPurchaseStatus,
 })
 
 const mapDispatchToProps = dispatch => ({
-  // exitCheckout: () => dispatch(actions.exitCheckout()),
   purchase: (cart) => dispatch(actions.sendPurchase(cart)),
 })
 
@@ -45,6 +44,7 @@ function PurchaseModal(props) {
           <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
         </div>
       </div>
+      {/* <Link to='/checkout' render={({cart}) => <Checkout cart={cart} />}>Proceed to checkout</Link> */}
     </div>
   );
 }
