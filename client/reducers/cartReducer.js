@@ -24,8 +24,8 @@ const productsReducer = (state = initialState, {type, payload}) => {
     }
     case SUBTRACT_FROM_CART: {
       const SKU = payload;
-      if (isValidSKU(SKU)) return state;
-      newQuantity = state.cart[SKU] ? state.cart[SKU] - 1 : -1;
+      if (!isValidSKU(SKU)) return state;
+      const newQuantity = state.cart[SKU] ? state.cart[SKU] - 1 : -1;
       if (newQuantity < 0) return state;
       const cartClone = JSON.parse(JSON.stringify(state.cart));
       if (newQuantity === 0) delete cartClone[[SKU]];
@@ -56,7 +56,7 @@ const productsReducer = (state = initialState, {type, payload}) => {
 export default productsReducer;
 
 function isValidProduct(product) {
-  return !product || isValidSKU(product.SKU);
+  return product && isValidSKU(product.SKU);
 }
 
 function isValidSKU(SKU) {
