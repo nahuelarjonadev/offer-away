@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import * as actions from '../actions/actions';
 
 const mapStateToProps = store => ({
-  totalItemsInCart: store.products.totalItemsInCart,
+  totalItemsInCart: store.cart.totalItemsInCart,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -20,7 +20,7 @@ function Header(props) {
         <h1>SNiX</h1>
       </div>
       <div className='header-right'>
-        <NavBar />
+        <NavBar routes={[{ link: '/home', text: 'Home'}, { link: '/purchase', text: 'Purchase'}, { link: '/business', text: 'Business'}]} />
         <CartBtn proceedToCheckout={props.proceedToCheckout} totalItemsInCart={props.totalItemsInCart} />
       </div>
     </header>
