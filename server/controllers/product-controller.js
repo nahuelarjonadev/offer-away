@@ -51,21 +51,21 @@ productCtrl.updateInventory = (req, res, next) => {
     .catch(err => {
       return next(err)
     })
+  
+};
 
-  // need to add method to delete
-  productCtrl.deleteProduct = (req, res, next) => {
-    Product.deleteProduct(req.body.sku)
+productCtrl.deleteProduct = (req, res, next) => {
+  Product.deleteProduct(req.body.SKU)
     .then(result => {
       res.locals.deleted = {
-        "success" : true,
-        "result" : result    
+        "success": true,
+        "result": result.rows
       }
       next()
     })
     .catch(err => {
       return next(err)
     })
-  }
-};
+}
 
 module.exports = productCtrl;
