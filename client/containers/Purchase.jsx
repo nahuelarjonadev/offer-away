@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import * as actions from '../actions/actions';
 
@@ -10,7 +11,7 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  exitCheckout: () => dispatch(actions.exitCheckout()),
+  // exitCheckout: () => dispatch(actions.exitCheckout()),
   purchase: (cart) => dispatch(actions.sendPurchase(cart)),
 })
 
@@ -32,7 +33,7 @@ function PurchaseModal(props) {
     <div className="overlay">
       <div className="modal">
         <div id="checkoutModal">
-          <button onClick={props.exitCheckout}>Exit</button>
+          <Link to="/"><button>Exit</button></Link>
           <div id="checkoutSummary">
             <ul>
               <li className="purchaseHeader"><span>Quantity</span><span>Description</span><span>Price</span></li>
