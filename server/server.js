@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const routes = require('./routes/api');
+const businessRoutes = require('.routes/businessapi')
 const { PORT } = process.env;
 const app = express();
 
@@ -13,6 +14,9 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 
 //express router
 app.use('/api', routes);
+
+//business router
+app.use('/businessapi', businessRoutes);
 
 //404 err handling
 app.use(function (req, res, next) {
