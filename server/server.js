@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const routes = require('./routes/api');
+const businessRoutes = require('./routes/businessapi');
 const { PORT } = process.env;
 const app = express();
 
@@ -10,10 +11,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Static route to access images hosted in server
 app.use('/static', express.static(path.join(__dirname, 'public')))
-app.use('/api', routes);
 
+//express router
+app.use('/api', routes);
+app.use('/businessapi', businessRoutes);
+
+//404 err handling
 app.use(function (req, res, next) {
-  //404
   res.locals.message = 'PAGE NOT FOUND';
   const err = new Error('RESOURCE NOT FOUND');
   err.status = 404;
@@ -22,7 +26,10 @@ app.use(function (req, res, next) {
 
 // Dedicated error handler
 app.use(function (err, req, res, next) {
-  res.status(404).json(err);
+  res.status(404).json({
+    success: false,
+    err: err.message,
+  });
 });
 
 app.listen(PORT, () => {
