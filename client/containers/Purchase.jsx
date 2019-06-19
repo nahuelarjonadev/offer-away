@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import Home from "../containers/Home";
-import { BrowserRouter as Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import * as actions from '../actions/actions';
 
@@ -46,8 +45,6 @@ function PurchaseModal(props) {
           <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
         </div>
       </div>
-
-      <Route exact path='/' component={Home} />
     </div>
   );
 }
