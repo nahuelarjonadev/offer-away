@@ -16,4 +16,8 @@ router.get('/categories', categoryCtrl.getCategories, (req, res) => {
   res.status(200).json(res.locals.response);
 })
 
+router.post('/categories', categoryCtrl.createCategory, (req, res) => {
+  res.status(200).json(res.locals.response);
+})
+
 module.exports = router;
