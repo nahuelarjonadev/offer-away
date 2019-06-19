@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import * as actions from '../actions/actions';
 
 const mapStateToProps = store => ({
-  totalItemsInCart: store.products.totalItemsInCart,
+  totalItemsInCart: store.cart.totalItemsInCart,
 })
 
 const mapDispatchToProps = dispatch => ({
