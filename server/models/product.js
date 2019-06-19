@@ -46,7 +46,9 @@ const productModel = {
       }
     })
   },
-  // add method to delete product
+  // method will take in the SKU from our client(req.body)
+  // method will look for a match in our DB and if found it will be deleted
+  // if there is no match, it will throw an error
   deleteProduct(SKU) {
     return new Promise((resolve, reject) => {
       const queryString = MATCH_SKU + `${SKU};`;
