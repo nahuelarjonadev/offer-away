@@ -54,6 +54,9 @@ productCtrl.updateInventory = (req, res, next) => {
   
 };
 
+// SKU will be brought in the request body
+// Will invoke our delete product method, which will delete our product from our DB
+// then store our deleted object in our res.locals, which will be sent to our client
 productCtrl.deleteProduct = (req, res, next) => {
   Product.deleteProduct(req.body.SKU)
     .then(result => {
