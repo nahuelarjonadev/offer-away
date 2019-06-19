@@ -44,7 +44,7 @@ const productModel = {
     })
   },
   // attributes will be request.body
-  createProduct(productInfo) {
+  addProduct(productInfo) {
     const productValues = [productInfo.category, productInfo.productName, productInfo.size, productInfo.inventory, productInfo.price];
     return new Promise((resolve, reject) => {
       pool.query(INSERT_PRODUCT, productValues, (err, result) => {
