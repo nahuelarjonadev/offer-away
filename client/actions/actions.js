@@ -81,4 +81,3 @@ export const acceptPurchase = (resMsg) => dispatch => {
     payload: resMsg,
   });
 }
-
