@@ -61,10 +61,10 @@ productCtrl.updateInventory = (req, res, next) => {
  */
  productCtrl.addProduct = (req, res, next) => {
    Product.addProduct(req.body)
-    .then(result => {
+    .then(() => {
       res.locals.response = {
         success: true,
-        result,
+        result: req.body,
       };
       next();
     })
