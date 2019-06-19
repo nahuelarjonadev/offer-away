@@ -44,7 +44,7 @@ function PurchaseModal(props) {
           <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
         </div>
       </div>
-      {/* <Link to='/checkout' render={({cart}) => <Checkout cart={cart} />}>Proceed to checkout</Link> */}
+      <Link to={{pathname:'/checkout', state: { cart: props.cart}}}>Proceed to checkout</Link>
     </div>
   );
 }
