@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { BrowserRouter as Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import * as actions from '../actions/actions';
-import Purchase from './Purchase';
 
 const mapStateToProps = store => ({
   products: store.products.products,
@@ -45,8 +44,6 @@ function PurchaseModal(props) {
           <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
         </div>
       </div>
-
-      <Route exact path='/purchase' component={Purchase} />
     </div>
   );
 }

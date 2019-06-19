@@ -7,21 +7,8 @@ import Home from '../containers/Home'
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/purchase">Purchase</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Route path="/" exact component={Home} />
-        <Route path="/purchase" component={Purchase} />
-      </div>
+      <Route path="/" exact component={Home} />
+      <Route path="/purchase" component={Purchase} />
     </Router>
   );
 }
