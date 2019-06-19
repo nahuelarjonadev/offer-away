@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import PurchaseModal from '../containers/PurcasheModal';
+import Purchase from '../containers/Purchase';
 import Home from '../containers/Home'
 
 function App() {
@@ -14,13 +14,13 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/img">Img 1</Link>
+              <Link to="/purchase">Purchase</Link>
             </li>
           </ul>
         </nav>
 
         <Route path="/" exact component={Home} />
-        <Route path="/img" component={PurchaseModal} />
+        <Route path="/purchase" component={Purchase} />
       </div>
     </Router>
   );
