@@ -3,6 +3,7 @@ import Header from './Header';
 import MainDisplay from '../components/MainDisplay'
 import Footer from '../components/Footer'
 import PurchaseModal from './PurcasheModal';
+import AddProduct from './AddProduct';
 import { connect } from "react-redux";
 
 const mapStateToProps = store => ({
@@ -14,6 +15,7 @@ function App({ onCheckoutPage }) {
     <div>
       <Header />
       <MainDisplay />
+      <AddProduct />
       <Footer />
       {onCheckoutPage && <PurchaseModal />}
     </div>

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/api');
 const { PORT } = process.env;
 const app = express();
-const storage = firebase.storage();
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
