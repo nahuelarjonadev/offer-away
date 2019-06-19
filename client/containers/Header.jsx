@@ -20,7 +20,7 @@ function Header(props) {
         <h1>SNiX</h1>
       </div>
       <div className='header-right'>
-        <NavBar />
+        <NavBar routes={[{ link: '/home', text: 'Home'}, { link: '/purchase', text: 'Purchase'}, { link: '/business', text: 'Business'}]} />
         <CartBtn proceedToCheckout={props.proceedToCheckout} totalItemsInCart={props.totalItemsInCart} />
       </div>
     </header>
