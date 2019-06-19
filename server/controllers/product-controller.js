@@ -51,8 +51,22 @@ productCtrl.updateInventory = (req, res, next) => {
     .catch(err => {
       return next(err);
     })
+  
 };
 
+productCtrl.deleteProduct = (req, res, next) => {
+  Product.deleteProduct(req.body.SKU)
+    .then(result => {
+      res.locals.deleted = {
+        "success": true,
+        "result": result.rows
+      }
+      next()
+    })
+    .catch(err => {
+      return next(err)
+    })
+}
 /**
  * addProduct - adds a product to the database based on form input
  * @param req - http.IncomingRequest
