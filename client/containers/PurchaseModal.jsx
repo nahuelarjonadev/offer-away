@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
 import * as actions from '../actions/actions';
+import Purchase from './Purchase';
 
 const mapStateToProps = store => ({
   products: store.products.products,
@@ -11,7 +13,6 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   exitCheckout: () => dispatch(actions.exitCheckout()),
-  purchase: (cart) => dispatch(actions.sendPurchase(cart)),
 })
 
 function PurchaseModal(props) {
@@ -40,10 +41,12 @@ function PurchaseModal(props) {
               <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
             </ul>
           </div>
-          <a className='btn btn-blue' id='purchaseBtn' onClick={() => props.purchase(props.cart)}>Purchase</a>
+          <Link to="/purchase" className='btn btn-blue' id='purchaseBtn' onClick={() => props.exitCheckout()}>Purchase</Link>
           <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
         </div>
       </div>
+
+      <Route exact path='/purchase' component={Purchase} />
     </div>
   );
 }
