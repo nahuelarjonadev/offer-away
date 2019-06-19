@@ -14,7 +14,7 @@ const MATCH_SKU = `SELECT * FROM "Product" WHERE "SKU"=`;
 
 const DELETE_SKU = `DELETE FROM "Product" WHERE "SKU"=`;
 
-const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5)`
+const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5) RETURNING * AS "returned"`
 
 const productModel = {
   //returns all shoes from database
@@ -69,6 +69,7 @@ const productModel = {
     const productValues = [productInfo.category, productInfo.productName, productInfo.size, productInfo.inventory, productInfo.price];
     return new Promise((resolve, reject) => {
       pool.query(INSERT_PRODUCT, productValues, (err, result) => {
+        console.log(result);
         if (err) return reject(err);
         resolve();
       })
