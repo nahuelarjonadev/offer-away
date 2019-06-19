@@ -34,6 +34,7 @@ categoryCtrl.createCategory = (req, res, next) => {
         success: true,
         result: req.body,
       }
+      next();
     })
     .catch((err) => {
       next(err);
