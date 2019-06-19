@@ -7,10 +7,10 @@ const multer = require('multer');
 // we will pass this function when a file is uploaded
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null,'./uploads/') // <- where to store
+    cb(null,'./server/public/') // <- where to store
   },
   filename: function(req, file, cb){
-    cb(null, new Date().toISOString() + file.originalname) // <- set new name for uploaded image
+    cb(null, 'logo.png') // <- set new name for uploaded image
   }
 })
 const upload = multer({storage: storage}); // <- implement 
@@ -41,9 +41,9 @@ router.post('/categories', categoryCtrl.createCategory, (req, res) => {
   res.status(200).json(res.locals.response);
 })
 
-// create route post route for image upload
+// create route post route for product image upload
 // multer, just like body parser actually parses form data
-router.post('/uploadImage', upload.single('productImage'), (req, res) => {
+router.post('/uploadImage', upload.single('image'), (req, res) => {
   res.status(200).json({message: 'completed'})
 })
 
