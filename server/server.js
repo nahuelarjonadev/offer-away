@@ -16,9 +16,6 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/api', routes);
 app.use('/businessapi', businessRoutes);
 
-//business router
-app.use('/businessapi', businessRoutes);
-
 //404 err handling
 app.use(function (req, res, next) {
   res.locals.message = 'PAGE NOT FOUND';
