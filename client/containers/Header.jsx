@@ -2,6 +2,7 @@ import React from 'react';
 import CartBtn from '../components/CartBtn';
 import NavBar from '../components/Navbar';
 import { connect } from "react-redux";
+import Login from './Login';
 
 import * as actions from '../actions/actions';
 
@@ -20,6 +21,9 @@ function Header(props) {
         <h1>SNiX</h1>
       </div>
       <div className='header-right'>
+      <div>
+        <Login />
+      </div>
         <NavBar />
         <CartBtn proceedToCheckout={props.proceedToCheckout} totalItemsInCart={props.totalItemsInCart} />
       </div>
