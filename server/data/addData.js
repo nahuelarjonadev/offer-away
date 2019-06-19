@@ -1,29 +1,24 @@
-const { Pool } = require('pg');
+const pool = require('../pool');
+if (pool.totalCount > 0) {
+  console.warn('totalConnections from the pool should be 0');
+  process.exitCode = 1;
+  return;
+}
 
-const pool = new Pool({
-  user: "xqtwqblw",
-  host: "raja.db.elephantsql.com",
-  database: "xqtwqblw",
-  password: "HOn-ooZWg4SonxCxotW_5cBofitQIVAX",
-  port: 5432,
-  max: 100,
-  idleTimeoutMillis: 30000,
-  _connectionTimeoutMillis: 2000,
-});
 
 const DROP_TABLES = `DROP TABLE "Category", "Product";`;
 
 const CREATE_CATEGORY = `CREATE TABLE "Category" (
-  "category_id" integer NOT NULL,
-  "category_name" varchar(255) NOT NULL,
-  PRIMARY KEY ("category_id"));`;
+  "category_id" SERIAL PRIMARY KEY,
+  "category_name" varchar(255) NOT NULL);`;
 
-const INSERT_CATEGORY = `INSERT INTO "Category" ("category_id", "category_name") VALUES 
-  (1, 'Adidas'),
-  (2, 'Nike'),
-  (3, 'Puma'),
-  (4, 'Air Jordan'),
-  (5, 'Off-White');`;
+const INSERT_CATEGORY = `INSERT INTO "Category" ("category_name") VALUES
+  ('Adidas'),
+  ('Nike'),
+  ('Puma'),
+  ('Air Jordan'),
+  ('Off-White'),
+  ('TestCategory');`;
 
 const CREATE_PRODUCT = `CREATE TABLE "Product" (
   "SKU" serial,
@@ -34,7 +29,7 @@ const CREATE_PRODUCT = `CREATE TABLE "Product" (
   "price" decimal NOT NULL,
   PRIMARY KEY ("SKU"));`;
 
-const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES 
+const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES
   ((SELECT "category_id" FROM "Category" WHERE "category_name"='Off-White'), '2.0 Distressed Suede-Trimmed Leather Sneakers', 9, 3, 470),
   ((SELECT "category_id" FROM "Category" WHERE "category_name"='Nike'), '+ Fear of God Nubuck, Suede and Canvas High-Top Sneakers', 9, 2, 190),
   ((SELECT "category_id" FROM "Category" WHERE "category_name"='Adidas'), 'A.R. Leather Sneakers', 11, 13, 100),
@@ -69,7 +64,8 @@ const insertCategory = () => {
       resolve(result)
     })
   }
-)};
+  )
+};
 
 const createProduct = () => {
   return new Promise((resolve, reject) => {
@@ -95,6 +91,11 @@ dropTables()
   .then(insertCategory)
   .then(createProduct)
   .then(insertProduct)
+  .then(() => {
+    console.log('Successfuly reseted the data');
+    return pool.end();
+  })
   .catch((err) => {
-    console.log(err)
+    console.error(err);
+    return pool.end();
   });

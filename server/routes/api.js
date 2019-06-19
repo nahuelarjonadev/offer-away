@@ -16,5 +16,5 @@ router.get('/products/:category', productCtrl.getCategory, (req, res) => {
 router.post('/purchase', productCtrl.updateInventory, (req, res) => {
   res.status(200).send(res.locals.success)
 });
-
+ 
 module.exports = router;
