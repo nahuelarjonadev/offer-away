@@ -34,9 +34,9 @@ function isValidProducts(res) {
   return Array.isArray(res);
 }
 
-export const addToCart = (id) => ({
+export const addToCart = (product) => ({
   type: types.ADD_TO_CART,
-  payload: id,
+  payload: product,
 });
 
 export const subtractFromCart = (id) => ({
