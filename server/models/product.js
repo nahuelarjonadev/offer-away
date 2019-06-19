@@ -10,6 +10,10 @@ const UPDATE_INVENTORY = `UPDATE "Product" SET "inventory" = "inventory" - `;
 
 const UPDATE_SKU = ` WHERE "SKU"=`;
 
+const MATCH_SKU = `SELECT "Product" WHERE`;
+
+const DELETE_SKU = `DELETE "Product" WHERE SKU=`;
+
 const productModel = {
   //returns all shoes from database
   getAll() {
@@ -38,6 +42,18 @@ const productModel = {
           if (err) return reject(err);
           resolve(result);
         })
+      }
+    })
+  },
+  // add method to delete product
+  deleteProduct(SKU){
+    return new Promise((reslove, reject) => {
+      pool.query(MATCH_SKU + `${SKU}`), (err, result) => {
+        if (err) return reject(err);
+      pool.query(DELETE_SKU + `${SKU}`), (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+        }
       }
     })
   }
