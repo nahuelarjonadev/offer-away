@@ -40,7 +40,7 @@ productCtrl.getCategory = (req, res, next) => {
 
 * @param req - http.IncomingRequest
 * @param res - http.ServerResponse
- * @param next
+* @param next
 */
 productCtrl.updateInventory = (req, res, next) => {
   Product.updateInventory(req.body)
@@ -49,7 +49,7 @@ productCtrl.updateInventory = (req, res, next) => {
       next()
     })
     .catch(err => {
-      return next(err)
+      return next(err);
     })
   
 };
@@ -67,5 +67,24 @@ productCtrl.deleteProduct = (req, res, next) => {
       return next(err)
     })
 }
+/**
+ * addProduct - adds a product to the database based on form input
+ * @param req - http.IncomingRequest
+ * @param res - http.ServerResponse
+ * @param next
+ */
+ productCtrl.addProduct = (req, res, next) => {
+   Product.addProduct(req.body)
+    .then(() => {
+      res.locals.response = {
+        success: true,
+        result: req.body,
+      };
+      next();
+    })
+    .catch(err => {
+      return next(err);
+    })
+ }
 
 module.exports = productCtrl;
