@@ -47,13 +47,9 @@ const productModel = {
   },
   // add method to delete product
   deleteProduct(SKU){
-    console.log(SKU); 
     return new Promise((resolve, reject) => {
       const queryString = MATCH_SKU + `${SKU};`;
-      // const queryString = 'SELECT * FROM "Product" LIMIT 100';
-      console.log(queryString);
       pool.query(queryString, (err, result) => {
-        console.log(result)
         if (err) return reject(err);
         if (!result) return reject('Product not found');
         pool.query(DELETE_SKU + `${SKU}`), (err, result) => {
