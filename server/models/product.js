@@ -13,6 +13,7 @@ const UPDATE_SKU = ` WHERE "SKU"=`;
 const MATCH_SKU = `SELECT * FROM "Product" WHERE "SKU"=`;
 
 const DELETE_SKU = `DELETE FROM "Product" WHERE "SKU"=`;
+
 const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5)`
 
 const productModel = {
@@ -46,7 +47,9 @@ const productModel = {
       }
     })
   },
-  // add method to delete product
+  // method will take in the SKU from our client(req.body)
+  // method will look for a match in our DB and if found it will be deleted
+  // if there is no match, it will throw an error
   deleteProduct(SKU) {
     return new Promise((resolve, reject) => {
       const queryString = MATCH_SKU + `${SKU};`;
