@@ -65,7 +65,8 @@ productCtrl.updateInventory = (req, res, next) => {
       res.locals.response = {
         success: true,
         result,
-      }
+      };
+      next();
     })
     .catch(err => {
       return next(err);
