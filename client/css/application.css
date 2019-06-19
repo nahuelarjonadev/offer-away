@@ -207,3 +207,8 @@ a.btn.btn-blue:active {
   background-color: #3C677B;
   border-color: rgba(0,0,0,0.9);
 }
+
+.activeLink {
+  font-weight: 900;
+  color: #FF1493;
+}
