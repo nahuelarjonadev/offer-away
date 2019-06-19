@@ -10,6 +10,9 @@ const UPDATE_INVENTORY = `UPDATE "Product" SET "inventory" = "inventory" - `;
 
 const UPDATE_SKU = ` WHERE "SKU"=`;
 
+const MATCH_SKU = `SELECT * FROM "Product" WHERE "SKU"=`;
+
+const DELETE_SKU = `DELETE FROM "Product" WHERE "SKU"=`;
 const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5)`
 
 const productModel = {
@@ -41,6 +44,21 @@ const productModel = {
           resolve(result);
         })
       }
+    })
+  },
+  // add method to delete product
+  deleteProduct(SKU) {
+    return new Promise((resolve, reject) => {
+      const queryString = MATCH_SKU + `${SKU};`;
+      pool.query(queryString, (err, result) => {
+        if (err) return reject(err);
+        if (!result) return reject('Product not found');
+        pool.query(DELETE_SKU + `${SKU}`), (err, result) => {
+          if (err) return reject(err);
+          resolve(result);
+        }
+        resolve(result);
+      })
     })
   },
   // attributes will be request.body
