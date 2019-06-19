@@ -63,7 +63,6 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         onCheckoutPage: false,
         sendPurchaseStatus: '',
-
       }
     case REQUEST_PURCHASE:
       return {
