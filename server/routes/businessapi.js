@@ -50,7 +50,7 @@ router.post('/uploadImage', upload.single('image'), (req, res) => {
 
 // route to modifyStock 
 // expecting SKU and Inventory in req.body
-router.post('/updateStock', productCtrl.modifyStock, (req,res) => {
+router.put('/updateStock', productCtrl.modifyStock, (req,res) => {
   res.status(200).json(res.locals.modified);
 })
 
