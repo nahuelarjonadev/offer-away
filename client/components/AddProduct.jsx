@@ -5,6 +5,7 @@ import { exitAddProduct, addProduct } from '../actions/actions';
 
 const mapStateToProps = (store) => ({
   postProductStatus: store.products.postProductStatus,
+  productModalHeading: store.products.productModalHeading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -13,12 +14,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 // TODO: fetch categories from server for dropdown instead of hardcoding
-function AddProduct({postProductStatus, exitAddProduct, addProduct}) {
+function AddProduct({productModalHeading, postProductStatus, exitAddProduct, addProduct}) {
   return(
     <div className="overlay">
       <div className="modal">
         <button onClick={exitAddProduct}>exit</button>
-        <h2>Add a Product</h2>
+        <h2>{productModalHeading}</h2>
         <Form
           onSubmit={addProduct}
           render={({ handleSubmit }) => (
