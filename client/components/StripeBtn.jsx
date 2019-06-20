@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import StripeCheckout from "react-stripe-checkout";
-const stripeBtn = ({priceInCents}) => {
+const stripeBtn = ({priceInCents, onCheckoutSuccess, onCheckoutFailure}) => {
   const publishableKey = "pk_test_ZU3mlTy0q00DATc9EyF9A8jX";
 
   const onToken = token => {
@@ -24,11 +24,11 @@ const stripeBtn = ({priceInCents}) => {
       .then(res => res.json())
       .then(res => {
         console.log(res);
-        alert("Payment Success");
+        onCheckoutSuccess();
       })
       .catch(error => {
         console.log("Payment Error: ", error);
-        alert("Payment Error");
+        onCheckoutFailure();
       });
   };
 
