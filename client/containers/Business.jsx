@@ -14,6 +14,7 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   setButtonText: () => dispatch(actions.setButtonText()),
   gotoAddProduct: () => dispatch(actions.gotoAddProduct()),
+  
 });
 
 class Business extends Component {
