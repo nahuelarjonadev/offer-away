@@ -3,17 +3,16 @@ import { Form, Field } from 'react-final-form';
 
 const onSubmit = (values) => {
   const body = JSON.stringify(values);
-  fetch('http://localhost:3000/businessapi/addProduct', {
+  fetch('http://localhost:3000/businessapi/create-product', {
     method: 'POST',
     body,
   })
     .then((res) => res.json())
     .then((res) => {
       if (res.success) console.log(res.result);
-      else throw new Error('Unsuccessful post');
     })
     .catch((err) => console.log(err));
-};
+}
 
 function AddProduct() {
   return(
