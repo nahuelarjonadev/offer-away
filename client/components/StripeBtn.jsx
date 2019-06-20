@@ -9,7 +9,7 @@ const stripeBtn = () => {
       token: token
     };
 
-    fetch(url, {
+    fetch('/purchase/stripe', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, cors, *same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -31,7 +31,7 @@ const stripeBtn = () => {
         alert("Payment Error");
       });
   };
-  
+
   return (
     <StripeCheckout
       label="Buy Item" //Component button text
@@ -41,7 +41,7 @@ const stripeBtn = () => {
       amount={999} //Amount in cents $9.99
       token={onToken}
       stripeKey={publishableKey}
-      image="https://www.vidhub.co" //Pop-in header image
+      image="/static/productImages/1.jpg" //Pop-in header image
       billingAddress={false}
     />
   );
