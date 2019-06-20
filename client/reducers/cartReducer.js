@@ -1,4 +1,4 @@
-import { ADD_TO_CART, SUBTRACT_FROM_CART, ACCEPT_PURCHASE, REQUEST_PURCHASE } from '../constants/actionTypes';
+import { ADD_TO_CART, SUBTRACT_FROM_CART, ACCEPT_PURCHASE, REQUEST_PURCHASE, RESET_PURCHASE_STATUS } from '../constants/actionTypes';
 
 const initialState = {
   totalItemsInCart: 0,
@@ -48,6 +48,13 @@ const productsReducer = (state = initialState, {type, payload}) => {
         totalItemsInCart: 0,
         cart: {},
       }
+    case RESET_PURCHASE_STATUS: {
+      return {
+        ...state,
+        sendPurchaseStatus: '',
+        sendPurchaseError: '',
+      }
+    }
     default:
       return state;
   }
