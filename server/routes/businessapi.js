@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
     cb(null, 'logo.png') // <- set new name for uploaded image
   }
 })
-const upload = multer({storage: storage}); // <- implement 
+const upload = multer({storage: storage}); // <- implement
 
 // created a delete route
 // will return an object {success: true, result: result} back to the client
@@ -48,7 +48,7 @@ router.post('/uploadImage', upload.single('image'), (req, res) => {
   res.status(200).json({message: 'completed'})
 })
 
-// route to modifyStock 
+// route to modifyStock
 // expecting SKU and Inventory in req.body
 router.put('/updateStock', productCtrl.modifyStock, (req,res) => {
   res.status(200).json(res.locals.modified);
