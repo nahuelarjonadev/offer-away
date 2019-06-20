@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import StripeBtn from '../components/StripeBtn';
 
 import * as actions from '../actions/actions';
 
@@ -21,7 +22,7 @@ function PurchaseModal(props) {
     const productTotalPrice = parseInt(product.price) * parseInt(quantity);
     purchaseTotalPrice += productTotalPrice;
     return (
-      <li className="productSummary">
+      <li className="productSummary" key={SKU} style={{ padding: 20, borderBottom: "solid 1px #E8E8E8" }}>
         <span> {quantity}</span>
         <span> {product.product_name} </span>
         <span> ${productTotalPrice} </span>
@@ -30,7 +31,7 @@ function PurchaseModal(props) {
   });
   return (
     <div>
-      <div>
+      <div style={styles}>
         <div id="checkoutSummary">
           <ul>
             <li className="purchaseHeader"><span>Quantity</span><span>Description</span><span>Price</span></li>
@@ -38,12 +39,13 @@ function PurchaseModal(props) {
             <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
           </ul>
         </div>
-        <a className='btn btn-blue' id='purchaseBtn' onClick={() => props.purchase(props.cart)}>Purchase</a>
+        <StripeBtn />
         <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
       </div>
-      <Link to={{pathname:'/checkout', state: { cart: props.cart}}}>Proceed to checkout</Link>
     </div>
   );
 }
+
+const styles = { display: 'flex', flexDirection: 'column', justifyContent: 'center'};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PurchaseModal);
