@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
+import exitAddProduct from '../actions/actions';
 
 const onSubmit = (values) => {
   fetch('/businessapi/create-product', {
@@ -16,11 +17,16 @@ const onSubmit = (values) => {
     .catch((err) => console.log(err));
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  exitAddProduct: () => dispatch(exitAddProduct()),
+});
+
 // TODO: fetch categories from server for dropdown instead of hardcoding
-function AddProduct() {
+function AddProduct(props) {
   return(
     <div className="overlay">
       <div className="modal">
+        <button onClick={props.exitAddProduct}>exit</button>
         <h2>Add a Product</h2>
         <Form
           onSubmit={onSubmit}
