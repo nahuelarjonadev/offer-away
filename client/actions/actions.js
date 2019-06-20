@@ -80,5 +80,12 @@ export const acceptPurchase = (resMsg) => dispatch => {
     type: types.ACCEPT_PURCHASE,
     payload: resMsg,
   });
-}
+};
 
+export const setButtonText = () => ({
+  type: types.SET_BUTTON_TEXT,
+});
+
+export const resetButtonText = () => ({
+  type: types.RESET_BUTTON_TEXT,
+})
