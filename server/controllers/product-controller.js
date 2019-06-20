@@ -106,5 +106,19 @@ productCtrl.deleteProduct = (req, res, next) => {
     })
   }
 
+  // middleware to return the our res object or catch an error
+  productCtrl.updateProduct = (req, res, next) => {
+    Product.modifyProduct(req.body)
+    .then(result => {
+      res.locals.updateProduct = {
+        "success": true,
+        "result": result
+      }
+      next()
+    })
+    .catch(err => {
+      return next(err);
+    })
+  }
   module.exports = productCtrl;
   
