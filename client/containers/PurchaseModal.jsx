@@ -21,7 +21,7 @@ function PurchaseModal(props) {
     const productTotalPrice = parseInt(product.price) * parseInt(quantity);
     purchaseTotalPrice += productTotalPrice;
     return (
-      <li className="productSummary">
+      <li className="productSummary" key={SKU} style={{ padding: 20, borderBottom: "solid 1px #E8E8E8" }}>
         <span> {quantity}</span>
         <span> {product.product_name} </span>
         <span> ${productTotalPrice} </span>
