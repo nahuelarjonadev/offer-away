@@ -1,36 +1,26 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from "react-redux";
-import { exitAddProduct } from '../actions/actions';
+import { exitAddProduct, addProduct } from '../actions/actions';
 
-const onSubmit = (values) => {
-  fetch('/businessapi/create-product', {
-    method: 'POST', // or 'PUT'
-    body: JSON.stringify(values), // data can be `string` or {object}!
-    headers: {
-      'Content-Type': 'application/json'
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.success) console.log(res.result);
-    })
-    .catch((err) => console.log(err));
-}
+const mapStateToProps = (store) => ({
+  postProductStatus: store.products.postProductStatus,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   exitAddProduct: () => dispatch(exitAddProduct()),
+  addProduct: (values) => dispatch(addProduct(values)),
 });
 
 // TODO: fetch categories from server for dropdown instead of hardcoding
-function AddProduct(props) {
+function AddProduct({postProductStatus, exitAddProduct, addProduct}) {
   return(
     <div className="overlay">
       <div className="modal">
-        <button onClick={props.exitAddProduct}>exit</button>
+        <button onClick={exitAddProduct}>exit</button>
         <h2>Add a Product</h2>
         <Form
-          onSubmit={onSubmit}
+          onSubmit={addProduct}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <div>
@@ -64,9 +54,10 @@ function AddProduct(props) {
             </form>
           )}
         />
+        <p>{postProductStatus}</p>
       </div>
     </div>
   )
 }
 
-export default connect(null, mapDispatchToProps)(AddProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(AddProduct);
