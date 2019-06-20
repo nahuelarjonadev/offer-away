@@ -40,7 +40,7 @@ function PurchaseModal(props) {
               <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
             </ul>
           </div>
-          <Link to="/purchase" className='btn btn-blue' id='purchaseBtn' onClick={() => props.exitCheckout()}>Purchase</Link>
+          <Link to="/checkout" className='btn btn-blue' id='purchaseBtn' onClick={() => props.exitCheckout()}>Purchase</Link>
           <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
         </div>
       </div>
