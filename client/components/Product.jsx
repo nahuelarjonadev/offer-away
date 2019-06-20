@@ -12,14 +12,14 @@ class Product extends Component {
           <div> In-Stock: {product.inventory}</div>
           <div> Price: ${product.price}</div>
         </div>
-        <button id="addtocart" onClick={() => this.props.addToCart(product)}> Add to Cart</button>
-        <button id="subtractFromCart" onClick={() => this.props.subtractFromCart(product.SKU)}> Subtract from Cart</button>
+        <button id="addtocart" onClick={() => this.props.button1Action(product)}>{this.props.buttonOneText}</button>
+        <button id="subtractFromCart" onClick={() => this.props.button2Action(product.SKU)}>{this.props.buttonTwoText}</button>
       </div>
     ));
- 
+
     return (
       <div id='catalog'>
-        {productsArr}   
+        {productsArr}
       </div>
     )
   }
