@@ -96,4 +96,41 @@ export const gotoAddProduct = () => ({
 
 export const exitAddProduct = () => ({
   type: types.EXIT_ADD_PRODUCT,
-})
+});
+
+export const postAddProduct = () => ({
+  // TODO: Implement in the reducer
+  type: types.POST_ADD_PRODUCT,
+});
+
+export const addProductSuccess = () => ({
+  // TODO: Implement in the reducer
+  type: types.ADD_PRODUCT_SUCCESS,
+});
+
+export const addProductFailure = (errMsg) => ({
+  // TODO: Implement in the reducer
+  type: types.ADD_PRODUCT_FAILURE,
+  payload: errMsg,
+});
+
+export const addProduct = (values) => dispatch => {
+  dispatch(postAddProduct())
+  fetch('/businessapi/create-product', {
+    method: 'POST', // or 'PUT'
+    body: JSON.stringify(values), // data can be `string` or {object}!
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (!res.success) throw new Error(res.err);
+      dispatch(addProductSuccess());
+      setTimeout(() => dispatch(exitAddProduct()), 1500)
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(addProductFailure(err));
+    });
+};
