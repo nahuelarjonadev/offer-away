@@ -2,8 +2,9 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const routes = require('./routes/api');
+const apiRoutes = require('./routes/api');
 const businessRoutes = require('./routes/businessapi');
+const purchaseRoutes = require('./routes/purchaseRoutes');
 const { PORT } = process.env;
 const app = express();
 
@@ -15,8 +16,9 @@ app.use(cors())
 app.use('/static', express.static(path.join(__dirname, 'public')))
 
 //express router
-app.use('/api', routes);
+app.use('/api', apiRoutes);
 app.use('/businessapi', businessRoutes);
+app.use('/purchase', purchaseRoutes);
 
 //404 err handling
 app.use(function (req, res, next) {
