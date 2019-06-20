@@ -89,6 +89,22 @@ productCtrl.deleteProduct = (req, res, next) => {
     .catch(err => {
       return next(err);
     })
- }
 
-module.exports = productCtrl;
+  }
+  
+  productCtrl.modifyStock = (req, res, next) => {
+    Product.modifyStock(req.body.SKU, req.body.inventory)
+    .then(result => {
+      res.locals.modified = {
+        "success": true,
+        "result": result
+      }
+      next()
+    })
+    .catch(err => {
+      return next(err)
+    })
+  }
+
+  module.exports = productCtrl;
+  
