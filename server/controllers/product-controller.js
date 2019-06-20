@@ -78,7 +78,8 @@ productCtrl.deleteProduct = (req, res, next) => {
  */
  productCtrl.addProduct = (req, res, next) => {
    Product.addProduct(req.body)
-    .then(() => {
+    .then((SKU) => {
+      res.locals.SKU = SKU;
       res.locals.response = {
         success: true,
         result: req.body,
@@ -88,6 +89,22 @@ productCtrl.deleteProduct = (req, res, next) => {
     .catch(err => {
       return next(err);
     })
- }
 
-module.exports = productCtrl;
+  }
+  
+  productCtrl.modifyStock = (req, res, next) => {
+    Product.modifyStock(req.body.SKU, req.body.inventory)
+    .then(result => {
+      res.locals.modified = {
+        "success": true,
+        "result": result
+      }
+      next()
+    })
+    .catch(err => {
+      return next(err)
+    })
+  }
+
+  module.exports = productCtrl;
+  
