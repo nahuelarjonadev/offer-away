@@ -29,20 +29,18 @@ function PurchaseModal(props) {
     )
   });
   return (
-    <div className="overlay">
-      <div className="modal">
-        <div id="checkoutModal">
-          <Link to="/"><button>Exit</button></Link>
-          <div id="checkoutSummary">
-            <ul>
-              <li className="purchaseHeader"><span>Quantity</span><span>Description</span><span>Price</span></li>
-              {products}
-              <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
-            </ul>
-          </div>
-          <a className='btn btn-blue' id='purchaseBtn' onClick={() => props.purchase(props.cart)}>Purchase</a>
-          <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
+    <div>
+      <div>
+        <Link to="/"><button>Exit</button></Link>
+        <div id="checkoutSummary">
+          <ul>
+            <li className="purchaseHeader"><span>Quantity</span><span>Description</span><span>Price</span></li>
+            {products}
+            <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
+          </ul>
         </div>
+        <a className='btn btn-blue' id='purchaseBtn' onClick={() => props.purchase(props.cart)}>Purchase</a>
+        <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
       </div>
       <Link to={{pathname:'/checkout', state: { cart: props.cart}}}>Proceed to checkout</Link>
     </div>
