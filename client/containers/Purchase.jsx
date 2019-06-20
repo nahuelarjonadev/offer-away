@@ -31,7 +31,6 @@ function PurchaseModal(props) {
   return (
     <div>
       <div>
-        <Link to="/"><button>Exit</button></Link>
         <div id="checkoutSummary">
           <ul>
             <li className="purchaseHeader"><span>Quantity</span><span>Description</span><span>Price</span></li>
