@@ -14,7 +14,7 @@ const MATCH_SKU = `SELECT * FROM "Product" WHERE "SKU"=`;
 
 const DELETE_SKU = `DELETE FROM "Product" WHERE "SKU"=`;
 
-const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5) RETURNING * AS "returned"`
+const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5)`
 
 const MODIFY_STOCK = 'UPDATE "Product" SET INVENTORY ='
 
