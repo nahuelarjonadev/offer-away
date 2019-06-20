@@ -1,4 +1,4 @@
-import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT } from '../constants/actionTypes';
+import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT, SET_BUTTON_TEXT } from '../constants/actionTypes';
 
 const initialState = {
   products: [{SKU: 1, product_name: 'product description', size: 0, inventory: '0', price: '0', category_name: 'category'}],
@@ -6,6 +6,8 @@ const initialState = {
   fetchProductsError: '',
   currentCategory: '',
   onCheckoutPage: false,
+  buttonOneText: 'Add To Cart',
+  buttonTwoText: 'Delete From Cart',
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -34,6 +36,12 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         onCheckoutPage: false,
         sendPurchaseStatus: '',
+      }
+    case SET_BUTTON_TEXT:
+      return {
+        ...state,
+        buttonOneText: 'Update Stock',
+        buttonTwoText: 'Delete This Item',
       }
     default:
       return state;
