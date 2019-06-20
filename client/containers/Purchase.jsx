@@ -39,7 +39,7 @@ function PurchaseModal(props) {
             <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
           </ul>
         </div>
-        <StripeBtn />
+        <StripeBtn priceInCents={purchaseTotalPrice * 100} />
         <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
       </div>
     </div>
