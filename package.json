@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/gipsykeys/jigglypuff#readme",
   "dependencies": {
+    "antd": "^3.19.6",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
@@ -42,8 +43,10 @@
     "react-final-form": "^6.3.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "stripe": "^7.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

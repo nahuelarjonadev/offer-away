@@ -36,6 +36,7 @@ module.exports = {
     proxy: {
       '/api': NODE_DEV_SERVER_URL,
       '/static': NODE_DEV_SERVER_URL,
+      '/purchase': NODE_DEV_SERVER_URL,
     },
   },
 };
