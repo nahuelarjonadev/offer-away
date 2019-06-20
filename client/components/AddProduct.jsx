@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import exitAddProduct from '../actions/actions';
+import { connect } from "react-redux";
+import { exitAddProduct } from '../actions/actions';
 
 const onSubmit = (values) => {
   fetch('/businessapi/create-product', {
@@ -39,6 +40,7 @@ function AddProduct(props) {
               <div>
                 <label>Category</label>
                 <Field name="category" component="select" >
+                  <option />
                   <option value={1}>Adidas</option>
                   <option value={2}>Nike</option>
                   <option value={3}>Puma</option>
@@ -67,4 +69,4 @@ function AddProduct(props) {
   )
 }
 
-export default AddProduct;
+export default connect(null, mapDispatchToProps)(AddProduct);
