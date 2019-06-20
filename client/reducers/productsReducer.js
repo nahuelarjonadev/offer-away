@@ -1,4 +1,4 @@
-import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT, SET_BUTTON_TEXT, RESET_BUTTON_TEXT } from '../constants/actionTypes';
+import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT, SET_BUTTON_TEXT, RESET_BUTTON_TEXT, GOTO_ADD_PRODUCT } from '../constants/actionTypes';
 
 const initialState = {
   products: [{SKU: 1, product_name: 'product description', size: 0, inventory: '0', price: '0', category_name: 'category'}],
@@ -6,6 +6,7 @@ const initialState = {
   fetchProductsError: '',
   currentCategory: '',
   onCheckoutPage: false,
+  onAddProductPage: false,
   buttonOneText: 'Add To Cart',
   buttonTwoText: 'Delete From Cart',
 }
@@ -48,6 +49,11 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         buttonOneText: 'Add to Cart',
         buttonTwoText: 'Remove from Cart',
+      }
+    case GOTO_ADD_PRODUCT:
+      return {
+        ...state,
+        onAddProductPage: true,
       }
     default:
       return state;
