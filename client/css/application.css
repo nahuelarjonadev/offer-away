@@ -63,10 +63,6 @@ ul.navbar li {
   padding: 0 3px;
 }
 
-h1, h2, h3, h4, h5, h6, p, img {
-  /* border: 1px solid black; */
-}
-
 h1 {
   padding-top: .4em;
   font-size: 4em;
@@ -242,10 +238,6 @@ h1 {
 #checkoutSummary .purchaseHeader {
   font-weight: 900;
   margin: 20px 0;
-}
-
-#purchaseBtn {
-
 }
 
 .text {
