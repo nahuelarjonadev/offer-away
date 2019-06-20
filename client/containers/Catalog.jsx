@@ -18,7 +18,6 @@ class Catalog extends Component {
   }
 
   render() {
-    console.log(this.props.button1Action);
     return (
       <div id='catalogview'>
         <Product button1Action={this.props.button1Action} button2Action={this.props.button2Action}
