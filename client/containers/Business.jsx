@@ -14,7 +14,6 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   setButtonText: () => dispatch(actions.setButtonText()),
   gotoAddProduct: () => dispatch(actions.gotoAddProduct()),
-  
 });
 
 class Business extends Component {
@@ -24,10 +23,11 @@ class Business extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{textAlign: 'center', padding: '20px'}}>
         {this.props.onAddProductPage && <AddProduct />}
-        <Catalog buttonOneText={this.props.buttonOneText} buttonTwoText={this.props.buttonTwoText} />
         <AddProductBtn gotoAddProduct={this.props.gotoAddProduct} />
+        <AddProductBtn gotoAddProduct={this.props.gotoAddProduct} />
+        <Catalog buttonOneText={this.props.buttonOneText} buttonTwoText={this.props.buttonTwoText} />
       </div>
     );
   }
