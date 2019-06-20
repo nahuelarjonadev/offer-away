@@ -88,4 +88,12 @@ export const setButtonText = () => ({
 
 export const resetButtonText = () => ({
   type: types.RESET_BUTTON_TEXT,
+});
+
+export const gotoAddProduct = () => ({
+  type: types.GOTO_ADD_PRODUCT,
+});
+
+export const exitAddProduct = () => ({
+  type: types.EXIT_ADD_PRODUCT,
 })

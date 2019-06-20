@@ -37,6 +37,7 @@ module.exports = {
       '/api': NODE_DEV_SERVER_URL,
       '/static': NODE_DEV_SERVER_URL,
       '/purchase': NODE_DEV_SERVER_URL,
+      '/businessapi': NODE_DEV_SERVER_URL,
     },
   },
 };
