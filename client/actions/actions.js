@@ -65,7 +65,7 @@ export const sendPurchase = (cart) => dispatch => {
     .then(res => res.json())
     .then(res => {
       // if (!isValidProducts(res)) throw new Error('something went wrong')
-      return dispatch(acceptPurchase(res))
+      dispatch(acceptPurchase(res))
     })
     .catch(err => console.error(err));
 }

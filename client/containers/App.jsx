@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Switch>
         <Route path='/(home)?' exact component={Home} />
-        <Route path='/purchase' component={Purchase} />
+        <Route path='/checkout' component={Purchase} />
         <Route path='/business' component={Business} />
         <Route path='/checkout' component={Checkout} />
         <Route component={NotFound} />
