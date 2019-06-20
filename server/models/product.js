@@ -14,7 +14,7 @@ const MATCH_SKU = `SELECT * FROM "Product" WHERE "SKU"=`;
 
 const DELETE_SKU = `DELETE FROM "Product" WHERE "SKU"=`;
 
-const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5) RETURNING * AS "returned"`
+const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5)`
 
 const MODIFY_STOCK = 'UPDATE "Product" SET INVENTORY ='
 
@@ -86,6 +86,62 @@ const productModel = {
         resolve(result);
       })
     })
+  },
+
+  // create a method that will query all of info
+  // expecting an object of SKU and (category_id, product_name, size, inventory, price).
+  modifyProduct(productInfo){
+    // console.log(productInfo)
+    const productSKU = productInfo.SKU;
+    let compareDb = null;
+  // when we do a query, we can just query for the SKU # and it will return an obj in our result
+    return new Promise ((resolve, reject) => {
+    pool.query(MATCH_SKU + `${productSKU};`, (err, result) => {
+      if (err) return reject ('Product not in database');
+      compareDb = result; 
+      const obj = {};
+      if (productInfo.category_id !== compareDb.category_id) {
+        obj.category_id = productInfo.category_id;
+      } else {
+        obj.category_id = compareDb.category_id;
+      }
+      if (productInfo.product_name !== compareDb.product_name) {
+        obj.product_name = productInfo.product_name;
+      } else {
+        obj.product_name = compareDb.product_name;
+      }
+      if (productInfo.size !== compareDb.size) {
+        obj.size = productInfo.size;
+      } else {
+        obj.size = compareDb.size;
+      }
+      if (productInfo.inventory !== compareDb.inventory) {
+        obj.inventory = productInfo.inventory;
+      } else {
+        obj.inventory = compareDb.inventory;
+      }
+      if (productInfo.price !== compareDb.price) {
+        obj.price = productInfo.price;
+      } else {
+        obj.price = compareDb.price;
+      }
+      // query to our database with our values of our new result object
+      const productValues = [obj.category_id, obj.product_name, obj.size, obj.inventory, obj.price]
+      const queryString = `UPDATE "Product" SET 
+            "category_id"=${productValues[0]},
+            "product_name"='${productValues[1]}',
+            "size"=${productValues[2]},
+            "inventory"=${productValues[3]},
+            "price"=${productValues[4]}
+            WHERE "SKU"=${productSKU};`
+      console.log(productInfo)
+      console.log(queryString);
+      pool.query(queryString, (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+           })
+        })
+     })
   }
 };
 

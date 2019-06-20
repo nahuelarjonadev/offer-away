@@ -54,4 +54,9 @@ router.put('/updateStock', productCtrl.modifyStock, (req,res) => {
   res.status(200).json(res.locals.modified);
 })
 
+// route to modify product
+// expecting an SKU, category_id, product_name, size, inventory, price
+router.put('/updateProduct', productCtrl.updateProduct, (req, res) =>{
+  res.status(200).json(res.locals.updateProduct)
+})
 module.exports = router;
