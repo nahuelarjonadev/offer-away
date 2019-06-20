@@ -16,6 +16,8 @@ const DELETE_SKU = `DELETE FROM "Product" WHERE "SKU"=`;
 
 const INSERT_PRODUCT = `INSERT INTO "Product" ("category_id", "product_name", "size", "inventory", "price") VALUES($1, $2, $3, $4, $5) RETURNING * AS "returned"`
 
+const MODIFY_STOCK = 'UPDATE "Product" SET INVENTORY ='
+
 const productModel = {
   //returns all shoes from database
   getAll() {
@@ -72,6 +74,16 @@ const productModel = {
         console.log(result);
         if (err) return reject(err);
         resolve();
+      })
+    })
+  },
+
+  modifyStock(SKU, inventory){
+    return new Promise((resolve, reject) => {
+      const queryString = MODIFY_STOCK + inventory + UPDATE_SKU + SKU;
+      pool.query(queryString, (err, result) => {
+        if (err) return reject ('Product not found');
+        resolve(result);
       })
     })
   }

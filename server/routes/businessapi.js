@@ -41,10 +41,17 @@ router.post('/categories', categoryCtrl.createCategory, (req, res) => {
   res.status(200).json(res.locals.response);
 })
 
+// for logo
 // create route post route for product image upload
 // multer, just like body parser actually parses form data
 router.post('/uploadImage', upload.single('image'), (req, res) => {
   res.status(200).json({message: 'completed'})
+})
+
+// route to modifyStock 
+// expecting SKU and Inventory in req.body
+router.post('/updateStock', productCtrl.modifyStock, (req,res) => {
+  res.status(200).json(res.locals.modified);
 })
 
 module.exports = router;
