@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import StripeBtn from '../components/StripeBtn';
 
 import * as actions from '../actions/actions';
@@ -12,13 +11,13 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  purchase: (cart) => dispatch(actions.sendPurchase(cart)),
+  sendPurchase: (cart) => dispatch(actions.sendPurchase(cart)),
 })
 
-function PurchaseModal(props) {
+function PurchaseModal({cart, products, sendPurchaseStatus, sendPurchase}) {
   let purchaseTotalPrice = 0;
-  const products = Object.entries(props.cart).map(([SKU, quantity]) => {
-    const product = Object.values(props.products).filter(p => p.SKU == SKU)[0];
+  const productsArr = Object.entries(cart).map(([SKU, quantity]) => {
+    const product = Object.values(products).filter(p => p.SKU == SKU)[0];
     const productTotalPrice = parseInt(product.price) * parseInt(quantity);
     purchaseTotalPrice += productTotalPrice;
     return (
@@ -35,17 +34,18 @@ function PurchaseModal(props) {
         <div id="checkoutSummary">
           <ul>
             <li className="purchaseHeader"><span>Quantity</span><span>Description</span><span>Price</span></li>
-            {products}
+            {productsArr}
             <li className="purchaseHeader"><span>Total:</span><span></span><span> $ {purchaseTotalPrice}</span></li>
           </ul>
         </div>
-        <StripeBtn priceInCents={purchaseTotalPrice * 100} />
-        <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d'}} >{props.sendPurchaseStatus}</p>
+        <StripeBtn onCheckoutSuccess={() => sendPurchase(cart)} priceInCents={purchaseTotalPrice * 100} />
+        <br />
+        <p style={{fontSize: '5em', fontWeight: 900, color: '#29293d', textAlign: 'center'}} >{sendPurchaseStatus}</p>
       </div>
     </div>
   );
 }
 
-const styles = { display: 'flex', flexDirection: 'column', justifyContent: 'center'};
+const styles = { display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '40px'};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PurchaseModal);
