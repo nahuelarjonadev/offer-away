@@ -131,6 +131,6 @@ export const addProduct = (values) => dispatch => {
     })
     .catch((err) => {
       console.log(err);
-      dispatch(addProductFailure(err));
+      dispatch(addProductFailure(typeof err === 'string' ? err : 'Sorry, please try again'));
     });
 };
