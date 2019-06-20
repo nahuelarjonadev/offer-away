@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import StripeCheckout from "react-stripe-checkout";
-const stripeBtn = () => {
+const stripeBtn = ({priceInCents}) => {
   const publishableKey = "pk_test_ZU3mlTy0q00DATc9EyF9A8jX";
 
   const onToken = token => {
     const body = {
-      amount: 999,
+      amount: priceInCents,
       token: token
     };
 
@@ -34,11 +34,11 @@ const stripeBtn = () => {
 
   return (
     <StripeCheckout
-      label="Buy Item" //Component button text
+      label="Checkout" //Component button text
       name="Fire Frost LLC" //Modal Header
       description="Buy your sneakers today!"
-      panelLabel="Buy Item" //Submit button in modal
-      amount={999} //Amount in cents $9.99
+      panelLabel="Buy" //Submit button in modal
+      amount={priceInCents} //Amount in cents $9.99
       token={onToken}
       stripeKey={publishableKey}
       image="/static/productImages/1.jpg" //Pop-in header image
