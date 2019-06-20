@@ -2,10 +2,12 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 
 const onSubmit = (values) => {
-  const body = JSON.stringify(values);
-  fetch('http://localhost:3000/businessapi/create-product', {
-    method: 'POST',
-    body,
+  fetch('/businessapi/create-product', {
+    method: 'POST', // or 'PUT'
+    body: JSON.stringify(values), // data can be `string` or {object}!
+    headers: {
+      'Content-Type': 'application/json'
+    },
   })
     .then((res) => res.json())
     .then((res) => {
@@ -14,6 +16,7 @@ const onSubmit = (values) => {
     .catch((err) => console.log(err));
 }
 
+// TODO: fetch categories from server for dropdown instead of hardcoding
 function AddProduct() {
   return(
     <div className="overlay">
@@ -29,7 +32,13 @@ function AddProduct() {
               </div>
               <div>
                 <label>Category</label>
-                <Field name="category" component="input" type="text" />
+                <Field name="category" component="select" >
+                  <option value={1}>Adidas</option>
+                  <option value={2}>Nike</option>
+                  <option value={3}>Puma</option>
+                  <option value={4}>Air Jordan</option>
+                  <option value={5}>Off-White</option>
+                </Field>
               </div>
               <div>
                 <label>Size</label>
