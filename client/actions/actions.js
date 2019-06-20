@@ -134,3 +134,11 @@ export const addProduct = (values) => dispatch => {
       dispatch(addProductFailure(typeof err === 'string' ? err : 'Sorry, please try again'));
     });
 };
+
+export const gotoUpdateProduct = () => ({
+  type: types.GOTO_UPDATE_PRODUCT,
+})
+
+export const updateProduct = (values) => dispatch => {
+  dispatch(gotoUpdateProduct());
+}
