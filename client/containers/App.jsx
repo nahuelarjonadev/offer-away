@@ -7,6 +7,7 @@ import Header from '../containers/Header';
 import Footer from '../components/Footer';
 import NotFound from '../components/NotFound';
 import Business from '../containers/Business';
+import Checkout from '../components/Checkout';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/(home)?' exact component={Home} />
         <Route path='/purchase' component={Purchase} />
         <Route path='/business' component={Business} />
+        <Route path='/checkout' component={Checkout} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
