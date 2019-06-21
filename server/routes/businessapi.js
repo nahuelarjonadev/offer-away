@@ -39,6 +39,10 @@ router.post('/uploadImage', imageCtrl.saveProductImage, (req, res) => {
   res.status(200).json(res.locals.response)
 })
 
+router.post('/uploadLogo', imageCtrl.saveLogo, (req, res) => {
+  res.status(200).json(res.locals.response)
+})
+
 // route to modifyStock
 // expecting SKU and Inventory in req.body
 router.put('/updateStock', productCtrl.modifyStock, (req,res) => {
