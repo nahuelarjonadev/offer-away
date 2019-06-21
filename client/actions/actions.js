@@ -135,10 +135,42 @@ export const addProduct = (values) => dispatch => {
     });
 };
 
-export const gotoUpdateProduct = () => ({
+export const gotoUpdateProduct = (product) => ({
   type: types.GOTO_UPDATE_PRODUCT,
-})
+  payload: product.SKU,
+});
+
+export const updatingProduct = () => ({
+  type: types.UPDATING_PRODUCT,
+});
+
+export const updateSuccess = () => ({
+  type: types.UPDATE_SUCCESS,
+});
+
+export const updateFailure = (err) => ({
+  type: types.UPDATE_FAILURE,
+  payload: err,
+});
 
 export const updateProduct = (values) => dispatch => {
-  dispatch(gotoUpdateProduct());
+  dispatch(updatingProduct());
+  fetch('/businessapi/updateProduct', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(values)
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.success) {
+        dispatch(updateSuccess());
+        setTimeout(() => dispatch(exitAddProduct()), 1500);
+      } else throw new Error(res.err);
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(updateFailure(err));
+    })
 }
