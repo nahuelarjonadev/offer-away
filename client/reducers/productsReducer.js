@@ -85,7 +85,7 @@ const productsReducer = (state = initialState, {type, payload}) => {
         ...state,
         onAddProductPage: true,
         creatingProduct: false,
-        currentSKUUpdating: payload.SKU,
+        currentSKUUpdating: payload,
       }
     case POST_ADD_PRODUCT:
       return {
