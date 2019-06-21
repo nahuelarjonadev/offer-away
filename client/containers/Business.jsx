@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Catalog from './Catalog';
 import AddProduct from '../components/AddProduct';
 import AddProductBtn from '../components/AddProductBtn';
+import Upload from '../components/Upload';
 
 const mapStateToProps = (store) => ({
   buttonOneText: store.products.buttonOneText,
@@ -36,6 +37,7 @@ class Business extends Component {
         <AddProductBtn gotoAddProduct={this.props.gotoAddProduct} />
         <Catalog buttonOneText={this.props.buttonOneText} buttonTwoText={this.props.buttonTwoText}
         button1Action={this.props.button1Action} />
+        <Upload></Upload>
       </div>
     );
   }
