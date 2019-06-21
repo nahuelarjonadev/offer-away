@@ -17,7 +17,7 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   setButtonText: () => dispatch(actions.setButtonText()),
   gotoAddProduct: () => dispatch(actions.gotoAddProduct()),
-  button1Action: () => dispatch(actions.gotoUpdateProduct(product)),
+  button1Action: (product) => dispatch(actions.gotoUpdateProduct(product)),
   addProduct: (values) => dispatch(actions.addProduct(values)),
   updateProduct: (values) => dispatch(actions.updateProduct(values)),
 });
