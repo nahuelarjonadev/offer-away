@@ -93,10 +93,13 @@ const productModel = {
   modifyProduct(productInfo){
     // console.log(productInfo)
     const productSKU = productInfo.SKU;
+    // console.log("productInfo----------------------------", productInfo);
     let compareDb = null;
   // when we do a query, we can just query for the SKU # and it will return an obj in our result
     return new Promise ((resolve, reject) => {
     pool.query(MATCH_SKU + `${productSKU};`, (err, result) => {
+      console.log(result);
+      console.log(productInfo);
       if (err) return reject ('Product not in database');
       compareDb = result;
       const obj = {};

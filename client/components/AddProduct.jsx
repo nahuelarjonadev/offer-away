@@ -12,7 +12,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 // TODO: fetch categories from server for dropdown instead of hardcoding
-function AddProduct({sku, status, onSubmit, productModalHeading, postProductStatus, exitAddProduct, addProduct}) {
+function AddProduct({SKU, status, onSubmit, productModalHeading, postProductStatus, exitAddProduct, addProduct}) {
+  console.log('SKU:', SKU);
   return(
     <div className="overlay">
       <div className="modal">
@@ -51,7 +52,7 @@ function AddProduct({sku, status, onSubmit, productModalHeading, postProductStat
               </div>
               <div style={{display: 'none'}}>
                 <label>SKU</label>
-                <Field name="SKU" component="input" type="text" default={sku} />
+                <Field name="SKU" component="input" type="text" initialValue={SKU} />
               </div>
               <button type="submit">Submit</button>
             </form>
