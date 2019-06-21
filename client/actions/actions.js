@@ -65,7 +65,10 @@ export const sendPurchase = (cart) => dispatch => {
     .then(res => res.json())
     .then(res => {
       // if (!isValidProducts(res)) throw new Error('something went wrong')
-      dispatch(acceptPurchase(res))
+      dispatch(acceptPurchase(res));
+      setTimeout(() => {
+        dispatch({type: types.RESET_PURCHASE_STATUS})
+      }, 2000);
     })
     .catch(err => console.error(err));
 }
