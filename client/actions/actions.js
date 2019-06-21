@@ -154,20 +154,22 @@ export const updateFailure = (err) => ({
 });
 
 export const updateProduct = (values) => dispatch => {
+  const body = JSON.stringify(values);
+  console.log(body);
   dispatch(updatingProduct());
   fetch('/businessapi/updateProduct', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(values)
+    body,
   })
     .then((res) => res.json())
     .then((res) => {
       if (res.success) {
         dispatch(updateSuccess());
         setTimeout(() => dispatch(exitAddProduct()), 1500);
-      } else throw new Error(res.err);
+      } // else throw new Error(res.err);
     })
     .catch((err) => {
       console.log(err);
