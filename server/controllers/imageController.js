@@ -10,8 +10,6 @@ const imageCtrl = {
     const uploadMiddleware = createUpload('image', req.body.SKU, 'public/productImages');
     uploadMiddleware(req, res, (err) => {
       if (err) return next(err);
-      console.log(req.body.SKU);
-      console.log(req.files.image);
       const folderPath = path.resolve(publicPath, 'public/productImages');
       fs.renameSync(folderPath + '/undefined.jpg', folderPath + '/' + req.body.SKU + '.jpg')
       res.locals.response = {
@@ -24,7 +22,14 @@ const imageCtrl = {
 
   saveLogo(req, res, next) {
     const uploadMiddleware = createUpload('image', 'logo', 'public');
-    uploadMiddleware(req, res, next);
+    uploadMiddleware(req, res, (err) => {
+      if (err) return next(err);
+      res.locals.response = {
+        success: true,
+        result: 'Completed',
+      };
+      return next();
+    });
   },
 
   none(req, res, next) {
