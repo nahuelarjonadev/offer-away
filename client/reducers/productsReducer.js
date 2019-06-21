@@ -1,16 +1,18 @@
-import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT, SET_BUTTON_TEXT, RESET_BUTTON_TEXT, GOTO_ADD_PRODUCT, EXIT_ADD_PRODUCT, POST_ADD_PRODUCT, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_FAILURE, GOTO_UPDATE_PRODUCT} from '../constants/actionTypes';
+import { REQUEST_PRODUCTS, RECEIVE_PRODUCTS, REQUEST_PRODUCTS_FAILURE, PROCEED_TO_CHECKOUT, EXIT_CHECKOUT, SET_BUTTON_TEXT, RESET_BUTTON_TEXT, GOTO_ADD_PRODUCT, EXIT_ADD_PRODUCT, POST_ADD_PRODUCT, ADD_PRODUCT_SUCCESS, ADD_PRODUCT_FAILURE, GOTO_UPDATE_PRODUCT, UPDATING_PRODUCT, UPDATE_SUCCESS, UPDATE_FAILURE} from '../constants/actionTypes';
 
 const initialState = {
   products: [{SKU: 1, product_name: 'product description', size: 0, inventory: '0', price: '0', category_name: 'category'}],
   fetchProductsStatus: '',
   postProductStatus: '',
+  updateProductStatus: '',
   fetchProductsError: '',
   currentCategory: '',
   onCheckoutPage: false,
   onAddProductPage: false,
   buttonOneText: 'Add To Cart',
   buttonTwoText: 'Delete From Cart',
-  productModalHeading: 'Add a Product',
+  creatingProduct: true,
+  currentSKUUpdating: null,
 }
 
 const productsReducer = (state = initialState, {type, payload}) => {
@@ -56,7 +58,7 @@ const productsReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         onAddProductPage: true,
-        productModalHeading: 'Add a Product',
+        creatingProduct: true,
       }
     case EXIT_ADD_PRODUCT:
       return {
@@ -82,7 +84,23 @@ const productsReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         onAddProductPage: true,
-        productModalHeading: 'Update a Product',
+        creatingProduct: false,
+        currentSKUUpdating: payload.SKU,
+      }
+    case POST_ADD_PRODUCT:
+      return {
+        ...state,
+        updateProductStatus: 'Updating...',
+      }
+    case UPDATE_SUCCESS:
+      return {
+        ...state,
+        updateProductStatus: 'Successfully updated!'
+      }
+    case UPDATE_SUCCESS:
+      return {
+        ...state,
+        updateProductStatus: payload,
       }
     default:
       return state;
