@@ -4,23 +4,23 @@ import { connect } from "react-redux";
 import { exitAddProduct, addProduct } from '../actions/actions';
 
 const mapStateToProps = (store) => ({
-  postProductStatus: store.products.postProductStatus,
+  SKU: store.products.currentSKUUpdating,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   exitAddProduct: () => dispatch(exitAddProduct()),
-  addProduct: (values) => dispatch(addProduct(values)),
 });
 
 // TODO: fetch categories from server for dropdown instead of hardcoding
-function AddProduct({postProductStatus, exitAddProduct, addProduct}) {
+function AddProduct({SKU, status, onSubmit, productModalHeading, postProductStatus, exitAddProduct, addProduct}) {
+  console.log('SKU:', SKU);
   return(
     <div className="overlay">
       <div className="modal">
         <button onClick={exitAddProduct}>exit</button>
-        <h2>Add a Product</h2>
+        <h2>{productModalHeading}</h2>
         <Form
-          onSubmit={addProduct}
+          onSubmit={onSubmit}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <div>
@@ -50,11 +50,15 @@ function AddProduct({postProductStatus, exitAddProduct, addProduct}) {
                 <label>Price</label>
                 <Field name="price" component="input" type="text" />
               </div>
+              <div style={{display: 'none'}}>
+                <label>SKU</label>
+                <Field name="SKU" component="input" type="text" initialValue={SKU} />
+              </div>
               <button type="submit">Submit</button>
             </form>
           )}
         />
-        <p>{postProductStatus}</p>
+        <p>{status}</p>
       </div>
     </div>
   )
