@@ -2,7 +2,12 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 function NavBar({ routes }) {
-  const NavLinks = routes.map((e, i) => <li key={i}><NavLink activeClassName='activeClassName' to={e.link}>{e.text}</NavLink></li>
+  const NavLinks = routes.map((e, i) => {
+    return (
+      <li key={i}>
+        <NavLink activeClassName='activeClassName' to={e.link}>{e.text}</NavLink>
+      </li>
+    )}
   )
 
   return (

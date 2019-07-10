@@ -6,20 +6,27 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFiles : null 
+      selectedFiles : null,
+      SKU: 1,
     };
     this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
     this.filesUploader = this.filesUploader.bind(this);
+    this.saveSKU = this.saveSKU.bind(this);
   }
   
   fileSelectedHandler(event) {
     this.setState({ selectedFiles: event.target.files[0]})
   }
+
+  saveSKU(number) {
+    console.log(number)
+    this.setState({ SKU: number})
+  }
   
   filesUploader() {
     const fd = new FormData();
     fd.append('image', this.state.selectedFiles, this.state.selectedFiles.name);
-    fd.append('SKU', '1');
+    fd.append('SKU', this.state.SKU);
     axios.post('/businessapi/uploadImage', fd)
       .then((res) => res.data)
       .then((res) => {
@@ -34,8 +41,13 @@ class Upload extends Component {
   render() {
     return (
       <div>
-        <input type="file" onChange={this.fileSelectedHandler}/>
-        <button onClick={this.filesUploader}></button>
+        <div>
+          <span>FILE: </span><input type="file" onChange={this.fileSelectedHandler}/>
+          <br />
+          <span>SKU: </span><input type="text" onChange={(event) => this.saveSKU(event.target.value)}/>
+          <br />
+          <button onClick={this.filesUploader}></button>
+        </div>
       </div>
     );
   }
