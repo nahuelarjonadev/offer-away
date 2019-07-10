@@ -171,6 +171,7 @@ export const updateProduct = (values) => dispatch => {
     .then((res) => {
       if (res.success) {
         dispatch(updateSuccess());
+        dispatch(fetchProducts())
         setTimeout(() => dispatch(exitAddProduct()), 1500);
       } // else throw new Error(res.err);
     })
