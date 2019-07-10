@@ -71,7 +71,6 @@ const productModel = {
     const productValues = [productInfo.category, productInfo.productName, productInfo.size, productInfo.inventory, productInfo.price];
     return new Promise((resolve, reject) => {
       pool.query(INSERT_PRODUCT, productValues, (err, result) => {
-        console.log(result);
         if (err) return reject(err);
         resolve();
       })
@@ -91,14 +90,11 @@ const productModel = {
   // create a method that will query all of info
   // expecting an object of SKU and (category_id, product_name, size, inventory, price).
   modifyProduct(productInfo){
-    // console.log(productInfo)
     const productSKU = productInfo.SKU;
-    // console.log("productInfo----------------------------", productInfo);
     let compareDb = null;
   // when we do a query, we can just query for the SKU # and it will return an obj in our result
     return new Promise ((resolve, reject) => {
     pool.query(MATCH_SKU + `${productSKU};`, (err, result) => {
-      console.log(result);
       console.log(productInfo);
       if (err) return reject ('Product not in database');
       compareDb = result;
@@ -129,7 +125,7 @@ const productModel = {
         obj.price = compareDb.price;
       }
       // query to our database with our values of our new result object
-      const productValues = [obj.category_id, obj.product_name, obj.size, obj.inventory, obj.price]
+      const productValues = [productInfo.category, productInfo.productName, obj.size, obj.inventory, obj.price]
       const queryString = `UPDATE "Product" SET
             "category_id"=${productValues[0]},
             "product_name"='${productValues[1]}',
