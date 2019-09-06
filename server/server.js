@@ -22,7 +22,7 @@ app.use('/purchase', purchaseRoutes);
 
 //404 err handling
 app.use(function (req, res, next) {
-  res.locals.message = 'PAGE NOT FOUND';
+  console.log(req.url, 'NOT FOUND');
   const err = new Error('RESOURCE NOT FOUND');
   err.status = 404;
   return next(err);
