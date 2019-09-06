@@ -27,6 +27,14 @@ header {
 
 .header-left {
   padding-left: 15px;
+  display:flex;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: 900;
+  font-style: italic;
 }
 
 .header-right {
@@ -69,13 +77,6 @@ ul.navbar {
 ul.navbar li {
   display: inline-block;
   padding: 0 3px;
-}
-
-h1 {
-  padding-top: .4em;
-  font-size: 4em;
-  font-weight: 900;
-  font-style: italic;
 }
 
 #catalogview {
