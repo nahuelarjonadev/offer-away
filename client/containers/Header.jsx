@@ -17,7 +17,7 @@ function Header(props) {
   return (
     <header>
       <div className='header-left'>
-        <h1>SNiX</h1>
+        <h1>Offer Away</h1>
       </div>
       <div className='header-right'>
         <NavBar routes={[{ link: '/home', text: 'Home'}, { link: '/checkout', text: 'Purchase'}, { link: '/business', text: 'Business'}]} />
